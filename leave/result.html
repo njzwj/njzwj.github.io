@@ -1,0 +1,295 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <!--<link rel="stylesheet" href="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/lib/weui/css/weui.css"/>
+    <link rel="stylesheet" href="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/lib/weui/css/weuix.css"/>
+    <link rel="stylesheet" href="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/css/main.css">
+    <script src="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/lib/weui/js/zepto.min.js"></script>
+    <script src="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/lib/weui/js/zepto.weui.js"></script>
+    <script src="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/lib/weui/js/php.js"></script>
+    <script src="http://yqtb.nwpu.edu.cn/wx/xg/yz-mobile/lib/weui/js/lrz.min.js"></script>-->
+    <link rel="stylesheet" href="./weui.css"/>
+    <link rel="stylesheet" href="./weuix.css"/>
+    <link rel="stylesheet" href="./main.css">
+    <script src="./zepto.min.js"></script>
+    <script src="./zepto.weui.js"></script>
+    <script src="./php.js"></script>
+    <script src="./lrz.min.js"></script>
+    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js">
+    </script>
+    <title>请假详细</title>
+    <style type="text/css">
+    .weui-cells.custom .weui-cell {
+	    padding: 12px 15px;
+	}
+	.weui-cell {
+	    position: initial;
+	    display: flex;
+	    -webkit-box-align: center;
+	    align-items: center;
+	}
+	.weui-cells.custom .weui-cell .weui-cell__bd {
+	    max-width: 30%;
+	}
+	.weui-cell__bd {
+	    -webkit-box-flex: 1;
+	    flex: 1;
+	}
+	.r-mark {
+	    color: #f00;
+	    padding-right: 5px;
+	    font-style: normal;
+	}
+	.weui-cells.custom .weui-cell .weui-cell__ft {
+	    flex: 1;
+	    text-align: right;
+	    color: #999999;
+	}
+	.weui-input {
+	    width: 100%;
+	    border: 0;
+	    outline: 0;
+	    -webkit-appearance: none;
+	    background-color: transparent;
+	    font-size: inherit;
+	    color: inherit;
+	    height: 1.47058824em;
+	    line-height: 1.47058824;
+	}
+	.container.leavedetails .leaveinfo.notpass .info .name span {
+	    color: #fff;
+	}
+	.container.leavedetails .flow>ul>li .content .ttl {
+	    font-weight: 500;
+	}
+	.container.leavedetails .flow>ul>li .avatar {
+	    width: 40px;
+	    height: 40px;
+	    font-size: 15px;
+	}
+	.container.leavedetails .leaveinfo .infodetails .box .item span {
+	    font-weight: 500;
+	    font-size: 16px;
+	}
+	.container.leavedetails .leaveinfo .explain .box .infocontent {
+	    margin: 0;
+	    flex: 1;
+	    font-weight: 500;
+	    color: #3961b0;
+	}
+	.container.leavedetails .leaveinfo.pass .info .name span {
+	      color: #FFF;
+	}
+	#fhan{
+		transform:rotate(-180deg);
+	}
+    </style>
+</head>
+<body>
+<div class="container leavedetails">
+    <!--审核通过 调用class  pass   为通过调用  notpass-->
+    
+    	<div class="leaveinfo pass">
+	
+    
+        <div class="info">
+            <div class="avatar student-name" style="width: 45px;height: 45px;font-size: 17px;">
+                <!-- < img src="images/temp/avatar.jpg" alt=""> -->
+                student-name
+            </div>
+            <div class="name">
+                
+                <span style="font-size: 16px;" class="student-fullname"></span>
+                <span style="font-size: 12px;color: #cac0c0fa;">审批已通过</span>
+            </div>
+        </div>
+        <div class="infodetails">
+            <div class="box">
+                <div class="item">
+                    <span class="title">所在学院</span>
+                    <span class="school">EE</span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="item">
+                    <span class="title">请假类型</span>
+                    <span>私事</span>
+                </div>
+                <div class="item">
+                    <span class="title">请假时长</span>
+                    <span id="qjsxs" class="interval"></span>
+                </div>
+            </div>
+            <div class="box">
+                <div class="item">
+                    <span class="title">请假开始时间</span>
+                    <span class="start-time">xxxx-xx-xx x时</span>
+                </div>
+                <div class="item">
+                    <span class="title">请假结束时间</span>
+                    <span class="end-time">xxxx-xx-xx xx时</span>
+                </div>
+            </div>
+        </div>
+        <div class="explain">
+        	<div class="box">
+                <span class="title">是否离校</span>
+                <p class="infocontent">离校</p >
+            </div>
+            <div class="box">
+                <span class="title">请假事由</span>
+                <p class="infocontent reason-for-leaving">xxx</p >
+            </div>
+            <div class="box">
+                <span class="title">前往目的地</span>
+                <p class="infocontent destination">xxxx</p >
+            </div>
+            <div class="box">
+                <span class="title">事由说明</span>
+                <p class="infocontent reason-for-leaving-detail">xxx</p >
+            </div>
+            
+            
+        </div>
+    </div>
+    <div class="flow">
+        <ul>
+            <li>
+                <!--审核通过 调用class  pass   为通过调用  notpass-->
+                <div class="avatar student-name">
+                    student-name
+                </div><!-- < img src="images/temp/avatar.jpg" alt=""> -->
+                <div class="content">
+                    <div class="ttl"><span class="text" style="font-size: 16px;">发起申请</span> <span class="time apply-time">xx-xx xx:xx</span></div>
+                    
+                </div>
+            </li>
+            
+            <li>
+                <!--审核通过 调用class  pass   为通过调用  notpass-->
+                <div class="avatar pass reviewer-name-1">
+                    reviewer-name-1
+                </div>
+                <div class="content">
+                    <div class="ttl"><span class="text" style="font-size: 16px;"><span class="reviewer-fullname-1">rn1</span>审核（已通过）</span> <span class="time review-time-1">xx-xx xx:xx</span></div>
+                    <div class="ctn"></div>
+                </div>
+            </li>
+            
+            <li>
+                <!--审核通过 调用class  pass   为通过调用  notpass-->
+                <div class="avatar pass reviewer-name-2">
+                    reviewer-name-2
+                </div>
+                <div class="content">
+                    <div class="ttl"><span class="text" style="font-size: 16px;"><span class="reviewer-fullname-2">rn2</span>审核（已通过）</span> <span class="time review-time-2">xx-xx xx:xx</span></div>
+                    <div class="ctn"></div>
+                </div>
+            </li>
+            
+            <li>
+                <div class="pointer">
+                    <i class="icon"></i>
+                </div>
+                <div class="content pointer">
+                    <div class="ttl apply-interval">审批共耗时xx</div>
+                </div>
+            </li>
+            
+        </ul>
+    </div>
+    <div style="text-align: left;">
+    	<button type="button" onclick="javascript:history.back(-1);" style="background-color:transparent;border-style:none;line-height:30px;color: #538fff;outline: none; ">
+       		<i id="fhan" style="font-size: 14px;margin-right: -3px;" class="icon iconfont icon-41"></i>
+       		返回
+       	</button>
+    </div>
+    <div class="footer-copy-space"></div>
+</div>
+<script>
+var getQueryVariable = (variable) => {
+    var query = window.location.search.substring(1);
+    query = query.split("+").join(" ");
+    query = decodeURIComponent(query);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+            var pair = vars[i].split("=");
+            if(pair[0] == variable){return pair[1];}
+    }
+    return(false);
+};
+
+var formatDate = (d) => {
+    let s = d.getFullYear() + "-" + String(d.getMonth() + 1) + "-" + d.getDate() + " " + d.getHours() + "时";
+    return s;
+};
+
+var formatTime = (d) => {
+    let s = String(d.getMonth() + 1) + "-" + d.getDate() + " " + 
+            (d.getHours < 10 ? "0" : "") + d.getHours() + ":" + 
+            (d.getMinutes() < 10 ? "0" : "") + d.getMinutes();
+    return s;
+};
+
+var getInterval = (d1, d2, format) => {
+   let diff = d2.getTime() - d1.getTime();
+   diff = (diff / 1000).toFixed(0);
+   let day = (diff / 3600 / 24).toFixed(0);
+   let hour = (diff / 3600).toFixed(0) - day * 24;
+   let minute = (diff / 60).toFixed(0) - day * 24 * 60 - hour * 60;
+   let s = (day > 0 && format.match(/d/) ? (String(day) + "天 ") : "") + 
+           (hour > 0 && format.match(/h/) ? (String(hour) + "时") : "") +
+           (minute > 0 && format.match(/m/) ? (String(minute) + "分钟") : "");
+   return s;
+}
+
+var onDocReady = () => {
+    $(".school").text(getQueryVariable("school"));
+    $(".student-name").text(getQueryVariable("fullname").substring(1));
+    $(".student-fullname").text(getQueryVariable("fullname"));
+    $(".reviewer-name-1").text(getQueryVariable("reviewer-1").substring(1));
+    $(".reviewer-name-2").text(getQueryVariable("reviewer-2").substring(1));
+    $(".reviewer-fullname-1").text(getQueryVariable("reviewer-1"));
+    $(".reviewer-fullname-2").text(getQueryVariable("reviewer-2"));
+    $(".reason-for-leaving").text(getQueryVariable("reason-for-leaving"));
+    $(".destination").text(getQueryVariable("destination"));
+    $(".reason-for-leaving-detail").text(getQueryVariable("reason-for-leaving-detail"));
+    
+    let start_time = new Date(getQueryVariable("start-time"));
+    let end_time = new Date(getQueryVariable("end-time"));
+
+    $(".start-time").text(formatDate(start_time));
+    $(".end-time").text(formatDate(end_time));
+    $(".interval").text(getInterval(start_time, end_time, "dhm"));
+
+    let apply_time = new Date(getQueryVariable("apply-time"));
+    let review_time1 = new Date(getQueryVariable("review-time-1"));
+    let review_time2 = new Date(getQueryVariable("review-time-2"));
+    $(".apply-time").text(formatTime(apply_time));
+    $(".review-time-1").text(formatTime(review_time1));
+    $(".review-time-2").text(formatTime(review_time2));
+    $(".apply-interval").text("审批共耗时" + getInterval(apply_time, review_time2, "dhm"));
+};
+$(document).on("ready", onDocReady);
+
+/*
+fullname
+school
+reason-for-leaving
+reason-for-leaving-detail
+start-time
+end-time
+destination
+apply-time
+reviewer-1
+review-time-1
+reviewer-2
+review-time-2
+*/
+</script>
+</body>
+</html>

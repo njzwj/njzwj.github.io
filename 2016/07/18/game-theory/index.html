@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-njzwj.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-njzwj.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-njzwj.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"njzwj.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="对巴什博弈、威佐夫博弈和尼姆博弈的简单总结。这三种博弈都可以表示成取石子的游戏。最后介绍了能解决更广泛的ICG问题的SG函数。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="几种博弈的简单描述">
+<meta property="og:url" content="https://njzwj.github.io/2016/07/18/game-theory/index.html">
+<meta property="og:site_name" content="玄学的日常">
+<meta property="og:description" content="对巴什博弈、威佐夫博弈和尼姆博弈的简单总结。这三种博弈都可以表示成取石子的游戏。最后介绍了能解决更广泛的ICG问题的SG函数。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2016-07-18T01:10:51.000Z">
+<meta property="article:modified_time" content="2020-11-04T07:00:07.436Z">
+<meta property="article:author" content="njzwj2007">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://njzwj.github.io/2016/07/18/game-theory/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>几种博弈的简单描述 | 玄学的日常</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138735157-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-138735157-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">玄学的日常</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">日々私たちが过ごしている日常は、実は、奇迹の连続なのかもしれな。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2016/07/18/game-theory/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          几种博弈的简单描述
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2016-07-18 09:10:51" itemprop="dateCreated datePublished" datetime="2016-07-18T09:10:51+08:00">2016-07-18</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>对巴什博弈、威佐夫博弈和尼姆博弈的简单总结。这三种博弈都可以表示成取石子的游戏。最后介绍了能解决更广泛的ICG问题的SG函数。</p>
+<a id="more"></a>
+<h2 id="巴什博弈-bash-game">巴什博弈 (Bash Game)</h2>
+<p>有一堆n个石子，两个玩家轮流取，最少取1个最多取m个。最后取完的人获胜。</p>
+<p>显然$ n=0 <span class="math inline">\(时，先手没有石子可以取，所以输掉游戏。发现当\)</span>n=m+1<span class="math inline">\(时，后手总是能赢，先手总是输，是一个**奇异局势**。而且当\)</span>n=k(m+1)<span class="math inline">\(时，无论先手怎么取，后手总是将局势转移到\)</span>n=(k-1)(m+1)<span class="math inline">\(。也就是说，所有\)</span>n=k(m+1)<span class="math inline">\(都是奇异局势，从这样的局势出发，后手必胜。在\)</span>n=k(m+1)+r (1r m)$时，先手总是能把局面带入奇异局势，于是先手必胜。</p>
+<h2 id="威佐夫博弈-wythoff-game">威佐夫博弈 (Wythoff Game)</h2>
+<p>有两堆若干个石子，两人轮流取石子，可以从一堆当中取走任意多个或者从两堆当中同时取走相同多个石子(至少取走一个石子)。最后取完的人获胜。</p>
+<p>我们先将这个游戏的局面表示为一个二元组(a,b)，a、b都是非负整数，表示两堆石子分别还剩a个和b个，其中(a,b)和(b,a)是同一种状态，所以规定($ a b $)。</p>
+<p>很显然，(0,0)局面时，先手没有石子可以取，输掉游戏。(1,2)局面时，先手无论怎么取，最后一颗石子总是被后手取走，先手必败。我们已经发现了两个奇异局势。假设一个奇异局势是(a,b)，另一个局势(c,d)中，有b=c，那么先手总是能从d中取走若干个石子，d变为a，将局势变为奇异局势，从而获胜。我们尝试构造一个(c,d)，使得c、d满足如下条件：</p>
+<p>1). c是前面奇异局势中没有出现过的非负整数中最小的那个数。</p>
+<p>2). d-c比前面任意一个奇异局势中b-a要大。</p>
+<p>满足这两个条件的局势，先手无法从一个石子堆中取走若干个石子或者是从两堆当中取走相同数量的石子直接转向前面的某个奇异局势。最终先手必败。</p>
+<p>构造的序列如下：</p>
+<p>(0,0),(1,2),(3,5),(4,7),(6,10),......</p>
+<p>其中该序列中的局势满足$ a_i= *k , (k=b_i-a_i) $，我们可以用这个公式来判断某个局势是否为奇异局势。</p>
+<h2 id="尼姆博弈-nimm-game">尼姆博弈 (Nimm Game)</h2>
+<p>有若干堆石子，两人轮流从某一堆当中取走若干个石子，每次至少取走一个，最后取完的人获胜。</p>
+<p>为了更好地说明尼姆博弈，首先介绍<strong>必败态</strong>的概念：</p>
+<p>1). 无法进行任何移动的局面是必败态(比如石子已被取完)</p>
+<p>2). 可以移动到必败态的局面是非必败态</p>
+<p>3). 在必败态做的所有操作的结果都是非必败态</p>
+<p>那么在博弈之中必败态的具体含义是什么呢，就是说如果先手遇到的局面是必败态，那么他操作完之后一定会进入非必败态，而后手在非必败态一定可以进行一定操作后转移到必败态，所以，只要双方理性，进入必败态的人必败。</p>
+<p>先讲结论————尼姆博弈的必败态，假定n堆石子的数量分别为$ a_1,a_2, ,a_n $，必败态满足</p>
+<p>$ a_1 Xor a_2 Xor a_3 Xor Xor a_n = 0 $</p>
+<p>其中<strong>Xor</strong>是<strong>按位异或运算</strong>。Xor满足消去率，而且Xor的逆运算就是Xor本身。</p>
+<p>要证明这个状态是必败态，只要满足上述三条性质即可。</p>
+<p>1). 显然成立，全为0，异或运算后还是0。</p>
+<p>2). 对于某个局面$(a_1,a_2,,a_n) $，若它们的异或值不为0，那么一定存在一个合法的移动，将ai变为ai'之后，a1<sup>a2</sup>...an=0。假设a1<sup>a2</sup>...<sup>an=k，那么从ai(ai</sup>k&lt; ai)中取石子使他变为ai'=ai<sup>k个石子，那么局面变为a1</sup>a2<sup>...</sup>ai'<sup>...</sup>an=a1<sup>a2</sup>...<sup>ai</sup>...<sup>an</sup>k=k^k=0，进入必败局面。</p>
+<p>3).对于某个局面$ (a_1,a_2,...,a_n) $，若a1<sup>a2</sup>...<sup>an=0，一定不存在某个合法的移动，将ai改变成ai'后满足a1</sup>a2<sup>...</sup>ai'<sup>...</sup>an=0。因为异或运算满足消去率，由a1<sup>a2</sup>...<sup>an=a1</sup>a2<sup>...</sup>ai'<sup>...</sup>an可以得到ai=ai'。所以将ai改变成ai'不是一个合法的移动。</p>
+<h2 id="sg函数-sprague-garundy">SG函数 (Sprague-Garundy)</h2>
+<p>如果把Nimm的规则略加改变，你还能很快找出必胜策略吗？比如说：</p>
+<blockquote>
+<p>有n堆石子，每次可以从第1堆石子里取1颗、2颗或3颗，可以从第2堆石子里取奇数颗，可以从第3堆及以后石子里取任意颗。</p>
+</blockquote>
+<p>面对更加复杂的情况上面的三种博弈没法直接套用。这时候就祭出大杀器——SG函数。</p>
+<p>首先定义<strong>N-position</strong>和<strong>P-position</strong>。无法进行任何移动的局面是P-position(终点)；可以移动到P-position的局面是N-position；所有移动都导致N-position的局面是P-position。直观来说，上一次操作有必胜策略的局面是P-position，也就是说后手必胜或者先手必败；轮到当前操作的人有必胜策略的局面是N-position，也就是先手必胜。</p>
+<p>给定一个有向无环图和一个起始顶点上的一枚棋子，两名选手交替的将这枚棋子沿有向边进行移动，无法移 动者判负。事实上，这个游戏可以认为是所有Impartial Combinatorial Games的抽象模型。也就是说，任何一个ICG都可以通过把每个局面看成一个顶点，对每个局面和它的子局面连一条有向边来抽象成这个“有向图游戏”。下 面我们就在有向无环图的顶点上定义Sprague-Garundy函数。首先定义mex(minimal excludant)运算，这是施加于一个集合的运算，表示<strong>最小的不属于这个集合的非负整数</strong>。例如mex{0,1,2,4}=3、 mex{2,3,5}=0、mex{}=0。</p>
+<p>给定一个有向无环图，每个顶点的SG函数定义为<strong>g(x)=mex{g(y)|y是x的后继}</strong>。</p>
+<p>SG函数的性质和上述的必败态三条一一对应：</p>
+<p>1). 对于所有终止状态的顶点，它们都没有后继，所以g(x)=0。</p>
+<p>2). 对于所有的g(x)=0的顶点x，它的所有后继y都满足g(y)!=0。</p>
+<p>3). 对于所有g(x)!=0的顶点x，它一定有一个后继y满足g(y)=0。</p>
+<p>考虑SG函数的意义，当g(x)=k时，显然对于任意的0 &lt;= i &lt; k都存在一个x的后继y，使得g(y)=i。可以表示为，选择一堆数量为k的石子，可以把它取完或是取到一个小于它的总数的数量。对于n堆石子，对应顶点的SG值为(a1,a2,...,an)，那么原游戏的必胜策略就是将其中一个ai移动到k的状态。这原来就是尼姆博弈。尼姆博弈的每个必胜策略都对应着这n枚棋子的必胜策略。</p>
+<p>定义有向图游戏的和：设G1、G2、...、Gn是n个有向图游戏，G是它们的和，游戏G的移动规则是：任选一个子游戏Gi并移动上面的棋子。则g(G)=g(G1)<sup>g(G2)</sup>...^g(Gn)。</p>
+<p>回到开头的问题：</p>
+<blockquote>
+<p>有n堆石子，每次可以从第1堆石子里取1颗、2颗或3颗，可以从第2堆石子里取奇数颗，可以从第3堆及以后石子里取任意颗。</p>
+</blockquote>
+<p>对于第一个子游戏，有g(x)=x%4。第二个子游戏有g(x)=x%2。 第三个子游戏就是n-2堆石子的尼姆博弈，存在g(x)=x (x&gt;=3)，这样g(G)就可以求解出来了，得出必败态，判断输赢。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2016/05/03/my-first-post/" rel="prev" title="嘿，大家好">
+      <i class="fa fa-chevron-left"></i> 嘿，大家好
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2016/07/22/optimal-rate-of-spanning-tree-dinkelbach/" rel="next" title="「POJ2728」 最优比率生成树 二分/DinkelBach">
+      「POJ2728」 最优比率生成树 二分/DinkelBach <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#巴什博弈-bash-game"><span class="nav-number">1.</span> <span class="nav-text">巴什博弈 (Bash Game)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#威佐夫博弈-wythoff-game"><span class="nav-number">2.</span> <span class="nav-text">威佐夫博弈 (Wythoff Game)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#尼姆博弈-nimm-game"><span class="nav-number">3.</span> <span class="nav-text">尼姆博弈 (Nimm Game)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#sg函数-sprague-garundy"><span class="nav-number">4.</span> <span class="nav-text">SG函数 (Sprague-Garundy)</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">njzwj2007</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.poossk.com/" title="https:&#x2F;&#x2F;blog.poossk.com" rel="noopener" target="_blank">POLOSSK</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kidozh.com/" title="https:&#x2F;&#x2F;kidozh.com" rel="noopener" target="_blank">KIDOZH</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">njzwj2007</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

@@ -1,0 +1,10 @@
+digraph sample_rank {
+    // rankdir=LR;
+    rank=same {A B C};
+    rank=same {J H D E F G};
+    rank=same {I K};
+    A -> B -> C -> D -> E -> F -> G;
+    A -> H -> D -> I -> E -> G;
+    J -> H -> C -> E -> K;
+    I -> K -> G;
+}

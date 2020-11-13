@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Leave request generator.</title>
+        <style>
+            html, body, h1, h2, a { padding: 0; margin: 0; }
+        </style>
+    </head>
+    <body>
+        <h1>Leave request generator for NWPU.</h1>
+        <span>v0.0.3</span>
+        <form action="result.html" method="GET" accept-charset="UTF-8">
+            Name:<br/>
+            <input type="text" name="fullname" value="JZM"/><br/>
+            School:<br/>
+            <input type="text" name="school" value="School of Electronic Engineering"/><br/>
+            Type of leaving:<br/>
+            <input type="text" name="reason-for-leaving" value="To go home, etc."/><br/>
+            Reason for leaving:<br/>
+            <input type="text" name="reason-for-leaving-detail" value="To go home, etc."/><br/>
+            Leave from:<br/>
+            <input type="datetime-local" name="start-time"><br/>
+            to:<br/>
+            <input type="datetime-local" name="end-time"><br/>
+            Destination:<br/>
+            <input type="text" name="destination"><br/>
+            Apply time:<br/>
+            <input type="datetime-local" name="apply-time"><br/>
+            Reviewed by:<br/>
+            <input type="text" name="reviewer-1"><br/>
+            at:<br/>
+            <input type="datetime-local" name="review-time-1"><br/>
+            and reviewed by:<br/>
+            <input type="text" name="reviewer-2"><br/>
+            at:<br/>
+            <input type="datetime-local" name="review-time-2"><br/>
+            <button type="submit">Submit</button>
+        </form>
+
+        <p>
+            How to use this?
+            <ol>
+                <li>Apply this form.</li>
+                <li>Press submit to generate your leave request page.</li>
+                <li>Save the url so you can visit it anytime.</li>
+                <li>Please keep your internet connection while using this, because the result page requires resources from the internet.</li>
+            </ol>
+            Good luck.
+        </p>
+    </body>
+</html>

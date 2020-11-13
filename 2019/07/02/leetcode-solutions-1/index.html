@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-njzwj.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-njzwj.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-njzwj.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"njzwj.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Solutions for LeetCode:  407 - Trapping Rain Water II 815 - Bus Routes 679 - 24 Game 432 - All O&#96;one Data Structure 940 - Distinct Subsequences II">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Solutions 1">
+<meta property="og:url" content="https://njzwj.github.io/2019/07/02/leetcode-solutions-1/index.html">
+<meta property="og:site_name" content="玄学的日常">
+<meta property="og:description" content="Solutions for LeetCode:  407 - Trapping Rain Water II 815 - Bus Routes 679 - 24 Game 432 - All O&#96;one Data Structure 940 - Distinct Subsequences II">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-02T11:02:57.000Z">
+<meta property="article:modified_time" content="2020-11-04T07:00:07.475Z">
+<meta property="article:author" content="njzwj2007">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://njzwj.github.io/2019/07/02/leetcode-solutions-1/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>LeetCode Solutions 1 | 玄学的日常</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138735157-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-138735157-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">玄学的日常</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">日々私たちが过ごしている日常は、実は、奇迹の连続なのかもしれな。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2019/07/02/leetcode-solutions-1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode Solutions 1
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-02 19:02:57" itemprop="dateCreated datePublished" datetime="2019-07-02T19:02:57+08:00">2019-07-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Solutions for LeetCode:</p>
+<ol type="1">
+<li>407 - Trapping Rain Water II</li>
+<li>815 - Bus Routes</li>
+<li>679 - 24 Game</li>
+<li>432 - All O`one Data Structure</li>
+<li>940 - Distinct Subsequences II</li>
+</ol>
+<a id="more"></a>
+<h1 id="trapping-rain-water-ii">407 - Trapping Rain Water II</h1>
+<p>First, we have noticed that a block on the edge can not hold any water. Supposing we have some blocks which can hold water. The height of the surface depends on the shortest block in the surrounding blocks. In other words, we can traverse the blocks by increasing order of the height. When some block nearby is lower than current block, the block can be filled with water which surface is the same height of current block. If some newly visited block is higher than current block, then the block can not hold any water.</p>
+<p>We can calculate the maximum volume of water by the following scheme: 1. Add the edge blocks to a min heap (ordered by height). 2. Perform BFS using heap. Traverse the nearby blocks which have not been visited yet. 3. If the new block is shorter, pour some water. The volume equals to surface height - block height. Then we adjust the block height to surface height. Push the block into heap. 4. If the new block is taller, push the block into heap directly.</p>
+<p>That being said, we dynamically add new blocks into the heap and calculate the volume of water.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">block</span></span></span><br><span class="line"><span class="class">    &#123;</span></span><br><span class="line">        <span class="keyword">int</span> x, y, height;</span><br><span class="line">        block() &#123;&#125;</span><br><span class="line">        block(<span class="keyword">int</span> _x, <span class="keyword">int</span> _y, <span class="keyword">int</span> _h):x(_x), y(_y), height(_h) &#123;&#125;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> block&amp; rhs) <span class="keyword">const</span> &#123; <span class="keyword">return</span> height &gt; rhs.height; &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="keyword">int</span> n, m, vis[<span class="number">120</span>][<span class="number">120</span>];</span><br><span class="line">    <span class="keyword">int</span> dx[<span class="number">4</span>] = &#123;<span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>, <span class="number">0</span>&#125;, dy[<span class="number">4</span>] = &#123;<span class="number">0</span>, <span class="number">-1</span>, <span class="number">0</span>, <span class="number">1</span>&#125;;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">trapRainWater</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; heightMap)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line">        n = heightMap.size();</span><br><span class="line">        <span class="keyword">if</span> (!n) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        m = heightMap[<span class="number">0</span>].size();</span><br><span class="line">        <span class="keyword">if</span> (!m) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        priority_queue&lt;block&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            q.push(block(<span class="number">0</span>, i, heightMap[i][<span class="number">0</span>]));</span><br><span class="line">            q.push(block(m<span class="number">-1</span>, i, heightMap[i][m<span class="number">-1</span>]));</span><br><span class="line">            vis[i][<span class="number">0</span>] = vis[i][m<span class="number">-1</span>] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; m; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            q.push(block(i, <span class="number">0</span>, heightMap[<span class="number">0</span>][i]));</span><br><span class="line">            q.push(block(i, n - <span class="number">1</span>, heightMap[n - <span class="number">1</span>][i]));</span><br><span class="line">            vis[<span class="number">0</span>][i] = vis[n - <span class="number">1</span>][i] = <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">while</span> (q.size())</span><br><span class="line">        &#123;</span><br><span class="line">            block cur = q.top(); q.pop();</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; ++k)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> nx = cur.x + dx[k], ny = cur.y + dy[k];</span><br><span class="line">                <span class="keyword">if</span> (nx &lt; <span class="number">0</span> || nx &gt;= m || ny &lt; <span class="number">0</span> || ny &gt;= n) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">if</span> (vis[ny][nx]) <span class="keyword">continue</span>;</span><br><span class="line">                vis[ny][nx] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (heightMap[ny][nx] &lt; cur.height)</span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(block(nx, ny, cur.height));</span><br><span class="line">                    ans += cur.height - heightMap[ny][nx];</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    q.push(block(nx, ny, heightMap[ny][nx]));</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="bus-routes">815 - Bus Routes</h1>
+<p>I firstly submitted a naive solution using bfs. It considers a (transfer number, position) as state. The first solution was slow, yet acceptable.</p>
+<p>Another solution is to find a shortest path on the graph which vertexes are buses. We can first preprocess the input by sorting bus routes and find unique stations. Then use two pointers to find intersections within different buses. S and T cannot be found in the new graph. So we should create a new S and a new T connecting to the buses reaches to the original S and T.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numBusesToDestination</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; routes, <span class="keyword">int</span> S, <span class="keyword">int</span> T)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; edge[<span class="number">510</span>];</span><br><span class="line">        <span class="keyword">int</span> vis[<span class="number">510</span>], dist[<span class="number">510</span>];</span><br><span class="line">        <span class="keyword">int</span> ns = <span class="number">501</span>, nt = <span class="number">502</span>;  <span class="comment">// super s &amp; t</span></span><br><span class="line">        </span><br><span class="line">        <span class="keyword">if</span> (S == T) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// remove duplicated stations</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; routes.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            sort(routes[i].begin(), routes[i].end());</span><br><span class="line">            <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;::iterator it = unique(routes[i].begin(), routes[i].end());</span><br><span class="line">            routes[i].erase(it, routes[i].end());</span><br><span class="line">            it = <span class="built_in">std</span>::lower_bound(routes[i].begin(), routes[i].end(), S);</span><br><span class="line">            <span class="keyword">if</span> (it != routes[i].end() &amp;&amp; *it == S) </span><br><span class="line">            &#123; </span><br><span class="line">                edge[ns].push_back(i);</span><br><span class="line">                edge[i].push_back(ns);</span><br><span class="line">            &#125;</span><br><span class="line">            it = <span class="built_in">std</span>::lower_bound(routes[i].begin(), routes[i].end(), T);</span><br><span class="line">            <span class="keyword">if</span> (it != routes[i].end() &amp;&amp; *it == T) </span><br><span class="line">            &#123;</span><br><span class="line">                edge[nt].push_back(i);</span><br><span class="line">                edge[i].push_back(nt);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// calculate edges between buses</span></span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; routes.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; i; ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">int</span> p1 = <span class="number">0</span>, p2 = <span class="number">0</span>;</span><br><span class="line">                <span class="keyword">while</span> (p1 &lt; routes[i].size() &amp;&amp; p2 &lt; routes[j].size())</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (routes[i][p1] &lt; routes[j][p2]) &#123; ++p1; &#125;</span><br><span class="line">                    <span class="keyword">else</span> <span class="keyword">if</span> (routes[i][p1] &gt; routes[j][p2]) &#123; ++p2; &#125;</span><br><span class="line">                    <span class="keyword">else</span> </span><br><span class="line">                    &#123;</span><br><span class="line">                        edge[i].push_back(j);</span><br><span class="line">                        edge[j].push_back(i);</span><br><span class="line">                        <span class="keyword">break</span>;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">memset</span>(vis, <span class="number">0</span>, <span class="keyword">sizeof</span> vis);</span><br><span class="line">        <span class="built_in">queue</span>&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        q.push(ns);</span><br><span class="line">        vis[ns] = <span class="number">1</span>;</span><br><span class="line">        dist[ns] = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (q.size())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">int</span> cur = q.front(); q.pop();</span><br><span class="line">            <span class="keyword">int</span> nxt;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; edge[cur].size(); ++i)</span><br><span class="line">            &#123;</span><br><span class="line">                nxt = edge[cur][i];</span><br><span class="line">                <span class="keyword">if</span> (vis[nxt]) <span class="keyword">continue</span>;</span><br><span class="line">                vis[nxt] = <span class="number">1</span>;</span><br><span class="line">                q.push(nxt);</span><br><span class="line">                dist[nxt] = dist[cur] + <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">if</span> (nxt == nt) <span class="keyword">return</span> dist[nt];</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="game">679 - 24 Game</h1>
+<p>Simple brutal force. I solved this using DFS. Given n numbers, select 2 of them and perform different arithmetic operations. The n - 1 numbers remaining can be treated as the same. Keep finding until an answer is found. Other wise return -1.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">float</span> eps = <span class="number">1e-4</span>;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">equal</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">float</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a &lt; b + eps &amp;&amp; a &gt; b - eps;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">float</span> <span class="title">calOp</span><span class="params">(<span class="keyword">float</span> a, <span class="keyword">float</span> b, <span class="keyword">int</span> op)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (op == <span class="number">0</span>) &#123; <span class="keyword">return</span> a + b; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">1</span>) &#123; <span class="keyword">return</span> a - b; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">2</span>) &#123; <span class="keyword">return</span> a * b; &#125;</span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (op == <span class="number">3</span>) &#123; <span class="keyword">return</span> a / b; &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">0.0f</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">search</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; &amp;nums)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; num1;</span><br><span class="line">        <span class="keyword">if</span> (nums.size() == <span class="number">1</span>) </span><br><span class="line">        &#123;</span><br><span class="line">             <span class="keyword">return</span> equal(<span class="number">24</span>, nums[<span class="number">0</span>]);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; nums.size(); ++j)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (i == j) <span class="keyword">continue</span>;</span><br><span class="line">                num1.clear();</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; nums.size(); ++k) </span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (k == i || k == j) <span class="keyword">continue</span>;</span><br><span class="line">                    num1.push_back(nums[k]);</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">int</span> k = <span class="number">0</span>; k &lt; <span class="number">4</span>; ++k)</span><br><span class="line">                &#123;</span><br><span class="line">                    <span class="keyword">if</span> (k == <span class="number">3</span> &amp;&amp; equal(<span class="number">0</span>, nums[j])) <span class="keyword">continue</span>;</span><br><span class="line">                    num1.push_back(calOp(nums[i], nums[j], k));</span><br><span class="line">                    <span class="keyword">if</span> (search(num1)) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">                    num1.erase(num1.end() - <span class="number">1</span>);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">judgePoint24</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">vector</span>&lt;<span class="keyword">float</span>&gt; n1;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">4</span>; ++i) n1.push_back(nums[i]);</span><br><span class="line">        <span class="keyword">return</span> search(n1);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="all-oone-data-structure">432 - All O`one Data Structure</h1>
+<p>Use linked list to store the values of keys in order to achieve O(1) minmax query. But how to perfrom O(1) insertion/increase/decrease/deletion operation? We can use a hash map to store the linked list node pointer which contains some particular key. Then the insersion/increase/decrease/deletion are O(1).</p>
+<p>In C++, you can use STL to get an access to these data structures.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">AllOne</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">set_t</span> = <span class="built_in">unordered_set</span>&lt;<span class="built_in">string</span>&gt;;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">element_t</span> = pair&lt;<span class="keyword">int</span>, <span class="keyword">set_t</span>&gt;;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">list_t</span> = <span class="built_in">list</span>&lt;<span class="keyword">element_t</span>&gt;;</span><br><span class="line">    <span class="keyword">using</span> <span class="keyword">map_t</span> = <span class="built_in">unordered_map</span>&lt;<span class="built_in">string</span>, <span class="built_in">list</span>&lt;<span class="keyword">element_t</span>&gt;::iterator&gt;;</span><br><span class="line">    <span class="keyword">list_t</span> lst;</span><br><span class="line">    <span class="keyword">map_t</span> mp;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">()</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">list_t</span>::iterator it = lst.begin();</span><br><span class="line">        <span class="keyword">for</span> (; it != lst.end(); ++it)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">set_t</span>::iterator it1 = it-&gt;second.begin();</span><br><span class="line">            <span class="keyword">for</span> (; it1 != it-&gt;second.end(); ++it1)</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="built_in">cout</span> &lt;&lt; *it1 &lt;&lt; <span class="string">' '</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; <span class="string">"; "</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">        <span class="keyword">map_t</span>::iterator it2 = mp.begin();</span><br><span class="line">        <span class="keyword">for</span> (; it2 != mp.end(); ++it2)</span><br><span class="line">        &#123;</span><br><span class="line">            it = it2-&gt;second;</span><br><span class="line">            <span class="built_in">cout</span> &lt;&lt; it2-&gt;first &lt;&lt; <span class="string">' '</span> &lt;&lt; it-&gt;first &lt;&lt; <span class="string">';'</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">cout</span> &lt;&lt; <span class="string">'\n'</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Initialize your data structure here. */</span>    </span><br><span class="line">    AllOne() &#123;</span><br><span class="line">        lst.clear();</span><br><span class="line">        mp.clear();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Inserts a new key &lt;Key&gt; with value 1. Or increments an existing key by 1. */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">inc</span><span class="params">(<span class="built_in">string</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        <span class="keyword">list_t</span>::iterator it, it1, it2;</span><br><span class="line">        <span class="keyword">map_t</span>::iterator map_it;</span><br><span class="line">        map_it = mp.find(key);</span><br><span class="line">        <span class="keyword">if</span> (map_it == mp.end())   <span class="comment">// insert (key, 1)</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">if</span> (lst.begin() == lst.end() || lst.begin()-&gt;first &gt; <span class="number">1</span>)  <span class="comment">// minval isn't 1</span></span><br><span class="line">            &#123;</span><br><span class="line">                lst.push_front(make_pair(<span class="number">1</span>, <span class="keyword">set_t</span>(&#123;key&#125;)));</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span>            <span class="comment">// minval is 1</span></span><br><span class="line">            &#123;</span><br><span class="line">                lst.begin()-&gt;second.insert(key);</span><br><span class="line">            &#125;</span><br><span class="line">            mp[key] = lst.begin();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span>                <span class="comment">// increase mp[key] by 1</span></span><br><span class="line">        &#123;</span><br><span class="line">            it = map_it-&gt;second;</span><br><span class="line">            val = it-&gt;first + <span class="number">1</span>;</span><br><span class="line">            it-&gt;second.erase(key);</span><br><span class="line">            it1 = it; ++it1;</span><br><span class="line">            <span class="keyword">if</span> (it1 != lst.end() &amp;&amp; it1-&gt;first == val)     <span class="comment">// next list node happens to be val + 1</span></span><br><span class="line">            &#123;</span><br><span class="line">                it1-&gt;second.insert(key);</span><br><span class="line">                map_it-&gt;second = it1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">else</span>                       <span class="comment">// if not, manually insert a new node</span></span><br><span class="line">            &#123;</span><br><span class="line">                it2 = lst.insert(it1, make_pair(val, <span class="keyword">set_t</span>(&#123;key&#125;))); <span class="comment">// insert before it1</span></span><br><span class="line">                map_it-&gt;second = it2;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// check if it is empty</span></span><br><span class="line">            <span class="keyword">if</span> (it-&gt;second.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                lst.erase(it);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Decrements an existing key by 1. If Key's value is 1, remove it from the data structure. */</span></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dec</span><span class="params">(<span class="built_in">string</span> key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> val;</span><br><span class="line">        <span class="keyword">list_t</span>::iterator it, it1, it2;</span><br><span class="line">        <span class="keyword">map_t</span>::iterator map_it;</span><br><span class="line">        map_it = mp.find(key);</span><br><span class="line">        <span class="keyword">if</span> (map_it == mp.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="comment">// do nothing</span></span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span>                <span class="comment">// decrease mp[key] by 1</span></span><br><span class="line">        &#123;</span><br><span class="line">            it = map_it-&gt;second;</span><br><span class="line">            val = it-&gt;first - <span class="number">1</span>;</span><br><span class="line">            it-&gt;second.erase(key);</span><br><span class="line">            <span class="keyword">int</span> flag = <span class="number">0</span>;</span><br><span class="line">            </span><br><span class="line">            <span class="keyword">if</span> (it == lst.begin()) &#123; flag = <span class="number">1</span>; &#125;</span><br><span class="line">            <span class="keyword">else</span> </span><br><span class="line">            &#123;</span><br><span class="line">                it1 = it; --it1;</span><br><span class="line">                <span class="keyword">if</span> (it1-&gt;first != val) &#123; flag = <span class="number">1</span>; &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (flag)     <span class="comment">// manually insert a new node</span></span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">if</span> (val &gt; <span class="number">0</span>)</span><br><span class="line">                &#123;</span><br><span class="line">                    it2 = lst.insert(it, make_pair(val, <span class="keyword">set_t</span>(&#123;key&#125;)));</span><br><span class="line">                    map_it-&gt;second = it2;</span><br><span class="line">                &#125;</span><br><span class="line">                <span class="keyword">else</span></span><br><span class="line">                &#123;</span><br><span class="line">                    mp.erase(map_it);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125; </span><br><span class="line">            <span class="keyword">else</span>          <span class="comment">// next node happens to be val - 1</span></span><br><span class="line">            &#123;</span><br><span class="line">                it1 = it; --it1;</span><br><span class="line">                it1-&gt;second.insert(key);</span><br><span class="line">                map_it-&gt;second = it1;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="comment">// check if it is empty</span></span><br><span class="line">            <span class="keyword">if</span> (it-&gt;second.empty())</span><br><span class="line">            &#123;</span><br><span class="line">                lst.erase(it);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Returns one of the keys with maximal value. */</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">getMaxKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">list_t</span>::iterator it;</span><br><span class="line">        <span class="keyword">if</span> (lst.begin() == lst.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            it = lst.end(); --it;</span><br><span class="line">            <span class="keyword">return</span> *(it-&gt;second.begin());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">/** Returns one of the keys with Minimal value. */</span></span><br><span class="line">    <span class="function"><span class="built_in">string</span> <span class="title">getMinKey</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (lst.begin() == lst.end())</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="string">""</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">return</span> *(lst.begin()-&gt;second.begin());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"><span class="comment">/**</span></span><br><span class="line"><span class="comment"> * Your AllOne object will be instantiated and called as such:</span></span><br><span class="line"><span class="comment"> * AllOne* obj = new AllOne();</span></span><br><span class="line"><span class="comment"> * obj-&gt;inc(key);</span></span><br><span class="line"><span class="comment"> * obj-&gt;dec(key);</span></span><br><span class="line"><span class="comment"> * string param_3 = obj-&gt;getMaxKey();</span></span><br><span class="line"><span class="comment"> * string param_4 = obj-&gt;getMinKey();</span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+<h1 id="distinct-subsequences-ii">940 - Distinct Subsequences II</h1>
+<p>Let's take a look at the subsequences of S[1~i], including blank subsequence. Let's denote the number of subsequence of S[1~i] as dp[i]. When duplicated subsequences are not considered, we can easily find that dp[i] = dp[i-1] * 2. You can either choose to add or not to add the last character to the previous subsequences. The duplicated subsequences come from the subsequeces of the same ending character. Take &quot;abab&quot; as an example:</p>
+<ol type="1">
+<li>dp[0] - &quot;&quot;</li>
+<li>dp[1] - &quot;&quot;, &quot;a&quot;</li>
+<li>dp[2] - &quot;&quot;, &quot;a&quot;, &quot;b&quot;, &quot;ab&quot;</li>
+<li>dp[3] - &quot;&quot;, &quot;a&quot;, &quot;b&quot;, &quot;ab&quot;, <del>&quot;a&quot;</del>, &quot;aa&quot;, &quot;ba&quot;, &quot;aba&quot;</li>
+<li>dp[4] - &quot;&quot;, &quot;a&quot;, &quot;b&quot;, &quot;ab&quot;, &quot;aa&quot;, &quot;ba&quot;, &quot;aba&quot;, <del>&quot;b&quot;</del>,<del>&quot;ab&quot;</del>, &quot;bb&quot;, &quot;abb&quot;, &quot;aab&quot;, &quot;bab&quot;, &quot;abab&quot;</li>
+</ol>
+<p>The duplicated &quot;a&quot; in dp[3] comes from dp[0] + &quot;a&quot;. The duplicated &quot;b&quot; and &quot;ab&quot; in dp[4] comes from dp[1] + &quot;b&quot;. The transition function can be written as: dp[i] = dp[i-1] * 2 - (dp[last(S[i]) - 1]).</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">distinctSubseqII</span><span class="params">(<span class="built_in">string</span> S)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">const</span> <span class="keyword">long</span> <span class="keyword">long</span> m = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line">        <span class="keyword">int</span> n = S.size();</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">last</span><span class="params">(<span class="number">26</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">long</span> <span class="keyword">long</span>&gt; <span class="title">dp</span><span class="params">(n + <span class="number">1</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">        <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i)</span><br><span class="line">        &#123;</span><br><span class="line">            dp[i + <span class="number">1</span>] = dp[i] * <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (last[S[i] - <span class="string">'a'</span>] &gt; <span class="number">0</span>) dp[i + <span class="number">1</span>] -= dp[last[S[i] - <span class="string">'a'</span>] - <span class="number">1</span>];</span><br><span class="line">            dp[i + <span class="number">1</span>] = (dp[i + <span class="number">1</span>] + m) % m;</span><br><span class="line">            last[S[i] - <span class="string">'a'</span>] = i + <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (dp[n] - <span class="number">1</span> + m) % m;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2017/08/23/persistent-segment-tree-notes/" rel="prev" title="可持久化线段树">
+      <i class="fa fa-chevron-left"></i> 可持久化线段树
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2019/07/05/leetcode-solutions-2/" rel="next" title="LeetCode Solutions 2">
+      LeetCode Solutions 2 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#trapping-rain-water-ii"><span class="nav-number">1.</span> <span class="nav-text">407 - Trapping Rain Water II</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#bus-routes"><span class="nav-number">2.</span> <span class="nav-text">815 - Bus Routes</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#game"><span class="nav-number">3.</span> <span class="nav-text">679 - 24 Game</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#all-oone-data-structure"><span class="nav-number">4.</span> <span class="nav-text">432 - All O&#96;one Data Structure</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#distinct-subsequences-ii"><span class="nav-number">5.</span> <span class="nav-text">940 - Distinct Subsequences II</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">njzwj2007</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.poossk.com/" title="https:&#x2F;&#x2F;blog.poossk.com" rel="noopener" target="_blank">POLOSSK</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kidozh.com/" title="https:&#x2F;&#x2F;kidozh.com" rel="noopener" target="_blank">KIDOZH</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">njzwj2007</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

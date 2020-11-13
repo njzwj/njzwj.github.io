@@ -1,0 +1,4 @@
+graph undirected {
+    A -- B -- C;
+    B -- D;
+}

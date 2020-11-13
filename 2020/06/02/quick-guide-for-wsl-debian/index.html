@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-njzwj.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-njzwj.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-njzwj.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"njzwj.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Windows比较缺乏广泛使用而且易用性强的软件包管理器（有软件包管理器，如chocolatey），环境配置简直就是噩梦。尽管使用各种手段在Windows上做点小开发不是不可能，但是现在既然Microsoft免费送了个WSL，就顺势选择使用WSL节约时间。只要不是追求效率编译什么超大项目，WSL已经够用。这里记下了WSL Debian的快速配置备忘。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="WSL下Debian快速配置指南">
+<meta property="og:url" content="https://njzwj.github.io/2020/06/02/quick-guide-for-wsl-debian/index.html">
+<meta property="og:site_name" content="玄学的日常">
+<meta property="og:description" content="Windows比较缺乏广泛使用而且易用性强的软件包管理器（有软件包管理器，如chocolatey），环境配置简直就是噩梦。尽管使用各种手段在Windows上做点小开发不是不可能，但是现在既然Microsoft免费送了个WSL，就顺势选择使用WSL节约时间。只要不是追求效率编译什么超大项目，WSL已经够用。这里记下了WSL Debian的快速配置备忘。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-06-02T07:53:27.000Z">
+<meta property="article:modified_time" content="2020-11-04T07:00:07.481Z">
+<meta property="article:author" content="njzwj2007">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://njzwj.github.io/2020/06/02/quick-guide-for-wsl-debian/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>WSL下Debian快速配置指南 | 玄学的日常</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138735157-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-138735157-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">玄学的日常</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">日々私たちが过ごしている日常は、実は、奇迹の连続なのかもしれな。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2020/06/02/quick-guide-for-wsl-debian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          WSL下Debian快速配置指南
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-02 15:53:27" itemprop="dateCreated datePublished" datetime="2020-06-02T15:53:27+08:00">2020-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">手册</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Windows比较缺乏广泛使用而且易用性强的软件包管理器（有软件包管理器，如chocolatey），环境配置简直就是噩梦。尽管使用各种手段在Windows上做点小开发不是不可能，但是现在既然Microsoft免费送了个WSL，就顺势选择使用WSL节约时间。只要不是追求效率编译什么超大项目，WSL已经够用。这里记下了WSL Debian的快速配置备忘。</p>
+<a id="more"></a>
+<h1 id="摘要">摘要</h1>
+<ol type="1">
+<li><p>安装Windows子系统</p></li>
+<li><p>进入Debian进行初始化以及配置</p></li>
+<li><p>将apt软件管理器源更改为国内镜像</p></li>
+<li><p>安装Build-Essential（可选）</p></li>
+<li><p>开发环境</p></li>
+<li><p>注意事项</p></li>
+</ol>
+<h1 id="安装windows子系统">安装Windows子系统</h1>
+<p>为了安装Windows Subsystem Linux，首先需要开启WSL的功能：</p>
+<ul>
+<li><p>按下【Win+Q】使用开始菜单搜索框，键入【启用或关闭Windows功能】，【回车】。</p></li>
+<li><p>找到【适用于Windows的Linux子系统】，勾选该选项前的复选框，确认并重启计算机。此选项为WSL1。欲使用WSL2，请参考<a href="https://docs.microsoft.com/zh-cn/windows/wsl/install-win10" target="_blank" rel="noopener">适用于 Linux 的 Windows 子系统安装指南 (Windows 10)</a>。</p></li>
+</ul>
+<p>然后进入Microsoft Store，搜索Debian，获取并安装。</p>
+<h1 id="进入debian进行初始化以及配置">进入Debian进行初始化以及配置</h1>
+<p>在开始菜单中找到方才安装好的Debian，单击以启动。程序界面为一个Shell，右键状态栏可以找到配置选项进行自定义。</p>
+<p>初次启动Debian会自动进入设置界面。根据引导输入用户密码。此用户会自动成为sudoer。</p>
+<h1 id="将apt源切换为国内镜像">将apt源切换为国内镜像</h1>
+<ul>
+<li><p>键入<code>cat /etc/apt/sources.list</code>检视源列表。</p></li>
+<li><p>键入<code>sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak</code>备份源列表。</p></li>
+<li><p>键入<code>sudo vi /etc/apt/sources.list</code>编辑源列表。</p></li>
+<li><p>更改源为tuna源：<a href="https://mirrors.tuna.tsinghua.edu.cn/help/debian/" target="_blank" rel="noopener">Debian镜像-TUNA</a>。由于Debian不自动支持https，所以第一次仅将源改为http而非https。在<code>sudo apt install apt-transport-https ca-certificates</code>后，再将源中的http替换为https。</p></li>
+<li><p>不习惯使用vi？使用任何一个文本编辑器均可，尝试使用nano。</p></li>
+<li><p>每次更改后不要忘记<code>sudo apt update</code>。</p></li>
+</ul>
+<h1 id="安装build-essential">安装Build-Essential</h1>
+<p>Build Essential提供了Linux下的一套软件编译工具。包括gcc、g++、make等。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install build-essential</span><br></pre></td></tr></table></figure>
+<h1 id="开发环境">开发环境</h1>
+<p>我选择的开发环境是Visual Studio Code。在插件中查找Remote-WSL插件。安装后可以使用VSCode连接到WSL的系统中工作。</p>
+<p>在WSL中使用<code>explorer.exe .</code>命令可以在资源管理器中打开该文件夹。</p>
+<p>Windows磁盘被挂载在WSL的<code>/mnt/x/</code>上，其中<code>x</code>为盘符（小写）。</p>
+<h1 id="注意事项">注意事项</h1>
+<p>在我使用这一套方案几个月以后，发现这套方案的一点小问题。无伤大雅，但是使用时务必注意。</p>
+<p>尽管在WSL中，磁盘被挂载于<code>/mnt/x/</code>上，WSL在<code>/mnt/x/</code>上和Windows协作时会出现一定的权限问题。键入</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ls /mnt/c/ -l</span><br></pre></td></tr></table></figure>
+<p>会发现所有者是root。在这个目录下工作会很不方便，尤其是在使用npm这种有的依赖需要安装在项目文件夹的时候。一般工作目录建议放置在其它挂载点下来解决这种问题。</p>
+<p>Powershell和WSL最近支持了多种配色方案。控制台色彩辨识度可以得到可观提升。右键标题栏的菜单中以设置配色。</p>
+<p>还有件重要的事情是WSL暂时不能支持CUDA，需要深度学习的话仍然需要原生的Windows或者Linux。</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/06/02/migrate-to-hexo-4/" rel="prev" title="迁移到Hexo4">
+      <i class="fa fa-chevron-left"></i> 迁移到Hexo4
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/03/use-onedrive-as-a-personal-git-server/" rel="next" title="将Onedrive作为个人Git服务器">
+      将Onedrive作为个人Git服务器 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#摘要"><span class="nav-number">1.</span> <span class="nav-text">摘要</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装windows子系统"><span class="nav-number">2.</span> <span class="nav-text">安装Windows子系统</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#进入debian进行初始化以及配置"><span class="nav-number">3.</span> <span class="nav-text">进入Debian进行初始化以及配置</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#将apt源切换为国内镜像"><span class="nav-number">4.</span> <span class="nav-text">将apt源切换为国内镜像</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#安装build-essential"><span class="nav-number">5.</span> <span class="nav-text">安装Build-Essential</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#开发环境"><span class="nav-number">6.</span> <span class="nav-text">开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#注意事项"><span class="nav-number">7.</span> <span class="nav-text">注意事项</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">njzwj2007</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.poossk.com/" title="https:&#x2F;&#x2F;blog.poossk.com" rel="noopener" target="_blank">POLOSSK</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kidozh.com/" title="https:&#x2F;&#x2F;kidozh.com" rel="noopener" target="_blank">KIDOZH</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">njzwj2007</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

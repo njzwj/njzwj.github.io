@@ -1,0 +1,4 @@
+digraph directed {
+    A -> B -> C;
+    A -> D -> C;
+}

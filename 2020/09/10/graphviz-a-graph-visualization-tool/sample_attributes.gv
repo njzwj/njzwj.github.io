@@ -1,0 +1,9 @@
+digraph attributes {
+    node [shape=circle];
+    edge [style=dashed];
+    A [label="Node0"];
+    B [label="Node1" shape=box];
+    C [label="Diamond" shape=diamond style=filled fillcolor="#FFFF00"];
+    A -> B [label="Line1" color=red fontcolor=red];
+    B -> C [style=solid taillabel="Y"];
+}

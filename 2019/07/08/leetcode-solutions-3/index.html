@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-njzwj.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-njzwj.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-njzwj.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"njzwj.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="719 - Find K-th Smallest Pair Distance 632 - Smallest Range 699 - Falling Squares 45 - Jump Game II 664 - Strange Printer">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LeetCode Solutions 3">
+<meta property="og:url" content="https://njzwj.github.io/2019/07/08/leetcode-solutions-3/index.html">
+<meta property="og:site_name" content="玄学的日常">
+<meta property="og:description" content="719 - Find K-th Smallest Pair Distance 632 - Smallest Range 699 - Falling Squares 45 - Jump Game II 664 - Strange Printer">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-07-08T02:47:32.000Z">
+<meta property="article:modified_time" content="2020-11-04T07:00:07.478Z">
+<meta property="article:author" content="njzwj2007">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://njzwj.github.io/2019/07/08/leetcode-solutions-3/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>LeetCode Solutions 3 | 玄学的日常</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138735157-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-138735157-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">玄学的日常</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">日々私たちが过ごしている日常は、実は、奇迹の连続なのかもしれな。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2019/07/08/leetcode-solutions-3/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          LeetCode Solutions 3
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-07-08 10:47:32" itemprop="dateCreated datePublished" datetime="2019-07-08T10:47:32+08:00">2019-07-08</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol type="1">
+<li>719 - Find K-th Smallest Pair Distance</li>
+<li>632 - Smallest Range</li>
+<li>699 - Falling Squares</li>
+<li>45 - Jump Game II</li>
+<li>664 - Strange Printer</li>
+</ol>
+<a id="more"></a>
+<h1 id="find-k-th-smallest-pair-distance">719 - Find K-th Smallest Pair Distance</h1>
+<p>Obviously, there are <span class="math inline">\(n*(n-1)/2\)</span> pair distances in an array of length <span class="math inline">\(n\)</span>. We can binary search for the answer. First, we sort the array in ascending order denoted as <span class="math inline">\(A = a_1, a_2, \cdots, a_n\)</span>. Then we test if an arbitrary number, say <span class="math inline">\(x\)</span> is a K-th smallest pair distance. We just simply count how may pairs have the distance smaller than <span class="math inline">\(x\)</span>. If number of pairs is larger than <span class="math inline">\(k\)</span>, then <span class="math inline">\(x\)</span> is larger than answer.</p>
+<p>When counting pairs, we use the second binary search. Because <span class="math inline">\(A\)</span> is sorted, counting pairs starting from <span class="math inline">\(a_i\)</span> and distance smaller than <span class="math inline">\(x\)</span> is equivalent to binary searching <span class="math inline">\(a_i + x\)</span> between <span class="math inline">\(A[i]\)</span> and <span class="math inline">\(A[n]\)</span>. The time complexity would be <span class="math inline">\(O(n\log(A_{max}-A_{min})\log(n))\)</span>.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">bool</span> <span class="title">judge</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> x, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> sum = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; nums.size(); ++i) &#123;</span><br><span class="line">      <span class="keyword">auto</span> it = lower_bound(nums.begin(), nums.end(), x + nums[i]);</span><br><span class="line">      sum += it - nums.begin() - i - <span class="number">1</span>;</span><br><span class="line">      <span class="keyword">if</span> (sum &gt;= k) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">smallestDistancePair</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n = nums.size(), L, R, mid;</span><br><span class="line">    sort(nums.begin(), nums.end());</span><br><span class="line">    L = <span class="number">0</span>; R = nums[n - <span class="number">1</span>] - nums[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">while</span> (L &lt; R) &#123;</span><br><span class="line">      mid = (L + R + <span class="number">1</span>) / <span class="number">2</span>;</span><br><span class="line">      <span class="keyword">if</span> (judge(nums, mid, k)) &#123;</span><br><span class="line">        R = mid - <span class="number">1</span>;</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        L = mid;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> L;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="smallest-range">632 - Smallest Range</h1>
+<p>We first consider using k pointers to solve this problem. Because the target interval (range) requires being contained to at least one element in each list, we select the smallest number in k numbers, change it to the next one in the list it belongs to and update the answer. The tricky part is to maintain the data we need: The smallest and largest number in k. Min heap would be a good choise to maintain the smallest number. The largest number can be simply maintained by updating it when inserting new number into heap. When popping the smallest number out, we have to know if this is the last one in k numbers (the duplicated situation). We use a map/hash map to maintain the number of occurance of each number. The solution is quite straightforward afterwards. <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="class"><span class="keyword">struct</span> <span class="title">stat</span> &#123;</span></span><br><span class="line">    <span class="keyword">int</span> x;</span><br><span class="line">    <span class="keyword">int</span> l, p;</span><br><span class="line">    stat(<span class="keyword">int</span> _x, <span class="keyword">int</span> _l, <span class="keyword">int</span> _p):x(_x), l(_l), p(_p) &#123;&#125;</span><br><span class="line">    <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> stat&amp; rhs) <span class="keyword">const</span> &#123; <span class="keyword">return</span> x &gt; rhs.x; &#125;</span><br><span class="line">  &#125;;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; &amp;ans, <span class="keyword">int</span> lb, <span class="keyword">int</span> rb)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (ans[<span class="number">1</span>] - ans[<span class="number">0</span>] &gt; rb - lb) &#123;</span><br><span class="line">      ans[<span class="number">0</span>] = lb;</span><br><span class="line">      ans[<span class="number">1</span>] = rb;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">smallestRange</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; mp;</span><br><span class="line">    priority_queue&lt;stat&gt; q;</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">ans</span><span class="params">(<span class="number">2</span>, <span class="number">0</span>)</span></span>;</span><br><span class="line">    <span class="keyword">int</span> mx = <span class="number">-100000</span>, k = nums.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++i) &#123;</span><br><span class="line">      mx = max(mx, nums[i][<span class="number">0</span>]);</span><br><span class="line">      mp[nums[i][<span class="number">0</span>]] ++;</span><br><span class="line">      q.push(stat(nums[i][<span class="number">0</span>], i, <span class="number">0</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    ans[<span class="number">0</span>] = q.top().x;</span><br><span class="line">    ans[<span class="number">1</span>] = mx;</span><br><span class="line">    <span class="keyword">while</span> (q.size()) &#123;</span><br><span class="line">      stat cur = q.top(); q.pop();</span><br><span class="line">      <span class="keyword">if</span> (cur.p &lt; nums[cur.l].size() - <span class="number">1</span>) &#123;</span><br><span class="line">        q.push(stat(nums[cur.l][cur.p+<span class="number">1</span>], cur.l, cur.p+<span class="number">1</span>));</span><br><span class="line">        <span class="keyword">auto</span> it = mp.find(cur.x);</span><br><span class="line">        it-&gt;second -= <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">if</span> (it-&gt;second == <span class="number">0</span>) mp.erase(it);</span><br><span class="line">        mp[nums[cur.l][cur.p+<span class="number">1</span>]] ++;</span><br><span class="line">        mx = max(mx, nums[cur.l][cur.p+<span class="number">1</span>]);</span><br><span class="line">        update(ans, mp.begin()-&gt;first, mx);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure></p>
+<h1 id="falling-squares">699 - Falling Squares</h1>
+<p>When a square falls, it can be held by and sticked to the highest surface that touches it (ignoring the laws of physics, the center of gravity, balance, etc.). We need to dynamically maintain the height at every position and query the max height in an abitrary interval. A segment tree is used here to maintain the height. To support interval modification and query, a lazy label is added. Because the x position has a range of <span class="math inline">\([1, 10^8]\)</span>, we need to discreterize the x position first.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> lch p&lt;&lt;1</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rch p&lt;&lt;1|1</span></span><br><span class="line">  <span class="keyword">int</span> tot, st[<span class="number">4010</span> * <span class="number">8</span>], lazy[<span class="number">4010</span> * <span class="number">8</span>];</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">pushdown</span><span class="params">(<span class="keyword">int</span> p)</span> </span>&#123;</span><br><span class="line">    lazy[lch] = lazy[p];</span><br><span class="line">    lazy[rch] = lazy[p];</span><br><span class="line">    st[lch] = lazy[p];</span><br><span class="line">    st[rch] = lazy[p];</span><br><span class="line">    lazy[p] = <span class="number">-1</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">void</span> <span class="title">update</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y, <span class="keyword">int</span> z)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">      lazy[p] = z;</span><br><span class="line">      st[p] = z;</span><br><span class="line">      <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>;</span><br><span class="line">    <span class="keyword">if</span> (lazy[p] &gt;= <span class="number">0</span>) pushdown(p);</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= mid) update(lch, l, mid, x, y, z);</span><br><span class="line">    <span class="keyword">if</span> (mid &lt; y) update(rch, mid + <span class="number">1</span>, r, x, y, z);</span><br><span class="line">    st[p] = max(st[lch], st[rch]);</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">query</span><span class="params">(<span class="keyword">int</span> p, <span class="keyword">int</span> l, <span class="keyword">int</span> r, <span class="keyword">int</span> x, <span class="keyword">int</span> y)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= l &amp;&amp; r &lt;= y) &#123;</span><br><span class="line">      <span class="keyword">return</span> st[p];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">int</span> mid = (l + r) / <span class="number">2</span>, ans = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">if</span> (lazy[p] &gt;= <span class="number">0</span>) pushdown(p);</span><br><span class="line">    <span class="keyword">if</span> (x &lt;= mid) ans = query(lch, l, mid, x, y);</span><br><span class="line">    <span class="keyword">if</span> (mid &lt; y) ans = max(ans, query(rch, mid+<span class="number">1</span>, r, x, y));</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">fallingSquares</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; positions)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; ans, pts;</span><br><span class="line">    <span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt; pos2;</span><br><span class="line">    <span class="built_in">map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; rev;</span><br><span class="line">    <span class="keyword">int</span> n = positions.size();</span><br><span class="line">    <span class="comment">// discreterize</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">      pts.push_back(positions[i][<span class="number">0</span>]);</span><br><span class="line">      pts.push_back(positions[i][<span class="number">1</span>] + positions[i][<span class="number">0</span>] - <span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    sort(pts.begin(), pts.end());</span><br><span class="line">    <span class="keyword">auto</span> it = unique(pts.begin(), pts.end());</span><br><span class="line">    pts.erase(it, pts.end());</span><br><span class="line">    tot = pts.size();</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; tot; ++i) rev[pts[i]] = i;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">      pos2.push_back(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;(&#123;</span><br><span class="line">        rev[positions[i][<span class="number">0</span>]], </span><br><span class="line">        rev[positions[i][<span class="number">0</span>] + positions[i][<span class="number">1</span>] - <span class="number">1</span>],</span><br><span class="line">        positions[i][<span class="number">1</span>]</span><br><span class="line">      &#125;));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">memset</span>(st, <span class="number">0</span>, <span class="keyword">sizeof</span> st);</span><br><span class="line">    <span class="built_in">memset</span>(lazy, <span class="number">0xff</span>, <span class="keyword">sizeof</span> lazy);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">      <span class="keyword">int</span> h;</span><br><span class="line">      h = query(<span class="number">1</span>, <span class="number">0</span>, tot<span class="number">-1</span>, pos2[i][<span class="number">0</span>], pos2[i][<span class="number">1</span>]);</span><br><span class="line">      update(<span class="number">1</span>, <span class="number">0</span>, tot<span class="number">-1</span>, pos2[i][<span class="number">0</span>], pos2[i][<span class="number">1</span>], pos2[i][<span class="number">2</span>] + h);</span><br><span class="line">      ans.push_back(query(<span class="number">1</span>, <span class="number">0</span>, tot<span class="number">-1</span>, <span class="number">0</span>, tot<span class="number">-1</span>));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="jump-game-ii">45 - Jump Game II</h1>
+<p>Let's denote the least number of steps to reach position i as <span class="math inline">\(dp[i]\)</span>. It's obvious that <span class="math inline">\(dp[i]\)</span> is non-descending. When reaching position i, we can know that <span class="math inline">\(dp[i+1]\)</span> to <span class="math inline">\(dp[i+nums[i]]\)</span> equal to or less than <span class="math inline">\(dp[i]+1\)</span>. Now comes the tricky part. Consider we update <span class="math inline">\(dp[i+1]\)</span> to <span class="math inline">\(dp[i+nums[i]]\)</span> at the time we reach i, any <span class="math inline">\(dp[i]\)</span> updated before should be fixed. That being said, we can maintain a position representing the current farest position that can be reached in 0 step, any position within should share the same step number. If we find current position is out of reach, then we add one step to current position, and update the reach-out range. The time complexity achieves <span class="math inline">\(O(n)\)</span> now.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">jump</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">0</span>, n = nums.size(), reach0 = <span class="number">0</span>, reach = <span class="number">-1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; ++i) &#123;</span><br><span class="line">      <span class="keyword">if</span> (i &gt; reach0) &#123;</span><br><span class="line">        ++ans;</span><br><span class="line">        reach0 = reach;</span><br><span class="line">      &#125;</span><br><span class="line">      reach = max(reach, i + nums[i]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ans;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h1 id="strange-printer">664 - Strange Printer</h1>
+<p>Let's denote the minimum number of operations to get some substring as <span class="math inline">\(dp[l][r]\)</span>. If <span class="math inline">\(s[i]=s[l]\)</span>, we can split it into <span class="math inline">\(dp[l][i-1]\)</span> and <span class="math inline">\(dp[i+1][r]\)</span>. <span class="math inline">\(s[i]\)</span> and <span class="math inline">\(s[l]\)</span> share one operation. A top-down dp would do the job. <span class="math inline">\(dp[i][j] = min(dp[l][i-1] + dp[i+1][r])\)</span> for all i that <span class="math inline">\(s[i]=s[l]\)</span>. The time complexity would be <span class="math inline">\(O(n^3)\)</span>.</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">  <span class="keyword">int</span> n;</span><br><span class="line">  <span class="keyword">int</span> memo[<span class="number">110</span>][<span class="number">110</span>];</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">dp</span><span class="params">(<span class="keyword">const</span> <span class="built_in">string</span> &amp;s, <span class="keyword">int</span> l, <span class="keyword">int</span> r)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span> (memo[l][r] &gt;= <span class="number">0</span>) <span class="keyword">return</span> memo[l][r];</span><br><span class="line">    <span class="keyword">if</span> (l &gt; r) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">int</span> ans = <span class="number">1</span> + dp(s, l + <span class="number">1</span>, r);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> i = l + <span class="number">1</span>; i &lt;= r; ++i) <span class="keyword">if</span> (s[l] == s[i]) &#123;</span><br><span class="line">      ans = min(ans, dp(s, l, i - <span class="number">1</span>) + dp(s, i + <span class="number">1</span>, r));</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> memo[l][r] = ans;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">int</span> <span class="title">strangePrinter</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">    n = s.size();</span><br><span class="line">    <span class="keyword">if</span> (n == <span class="number">0</span>) <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">string</span> s1 = <span class="string">""</span>;</span><br><span class="line">    <span class="keyword">int</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (; i &lt; n; ++i) &#123;</span><br><span class="line">      s1 += s[i];</span><br><span class="line">      <span class="keyword">while</span> (i &lt; n - <span class="number">1</span> &amp;&amp; s[i + <span class="number">1</span>] == s[i]) ++i;</span><br><span class="line">    &#125;</span><br><span class="line">    n = s1.size();</span><br><span class="line">    <span class="built_in">memset</span>(memo, <span class="number">0xff</span>, <span class="keyword">sizeof</span> memo);</span><br><span class="line">    <span class="keyword">return</span> dp(s1, <span class="number">0</span>, n - <span class="number">1</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2019/07/05/leetcode-solutions-2/" rel="prev" title="LeetCode Solutions 2">
+      <i class="fa fa-chevron-left"></i> LeetCode Solutions 2
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/06/02/migrate-to-hexo-4/" rel="next" title="迁移到Hexo4">
+      迁移到Hexo4 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#find-k-th-smallest-pair-distance"><span class="nav-number">1.</span> <span class="nav-text">719 - Find K-th Smallest Pair Distance</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#smallest-range"><span class="nav-number">2.</span> <span class="nav-text">632 - Smallest Range</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#falling-squares"><span class="nav-number">3.</span> <span class="nav-text">699 - Falling Squares</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#jump-game-ii"><span class="nav-number">4.</span> <span class="nav-text">45 - Jump Game II</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#strange-printer"><span class="nav-number">5.</span> <span class="nav-text">664 - Strange Printer</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">njzwj2007</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">22</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+  </nav>
+</div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.poossk.com/" title="https:&#x2F;&#x2F;blog.poossk.com" rel="noopener" target="_blank">POLOSSK</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kidozh.com/" title="https:&#x2F;&#x2F;kidozh.com" rel="noopener" target="_blank">KIDOZH</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">njzwj2007</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

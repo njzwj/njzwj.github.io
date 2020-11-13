@@ -1,0 +1,11 @@
+digraph subgraphs {
+    A -> {B C};
+    B -> D;
+    C -> E;
+    subgraph BC {
+        B; C;
+    }
+    subgraph cluster_DE {
+        D; E;
+    }
+}
