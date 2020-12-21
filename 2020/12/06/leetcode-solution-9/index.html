@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-njzwj.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-njzwj.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-njzwj.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"njzwj.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="1681 - Minimum Incompatibility (Leetcode Weekly 218) 1675 - Minimize Deviation in Array (Leetcode Weekly 218) 1674 - Minimum Moves to Make Array Complementary (Leetcode Weekly 218)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="leetcode题解 9">
+<meta property="og:url" content="https://njzwj.github.io/2020/12/06/leetcode-solution-9/index.html">
+<meta property="og:site_name" content="玄学的日常">
+<meta property="og:description" content="1681 - Minimum Incompatibility (Leetcode Weekly 218) 1675 - Minimize Deviation in Array (Leetcode Weekly 218) 1674 - Minimum Moves to Make Array Complementary (Leetcode Weekly 218)">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-12-06T09:49:58.000Z">
+<meta property="article:modified_time" content="2020-12-21T12:05:03.964Z">
+<meta property="article:author" content="njzwj2007">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://njzwj.github.io/2020/12/06/leetcode-solution-9/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>leetcode题解 9 | 玄学的日常</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138735157-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-138735157-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">玄学的日常</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">日々私たちが过ごしている日常は、実は、奇迹の连続なのかもしれな。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2020/12/06/leetcode-solution-9/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          leetcode题解 9
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-12-06 17:49:58" itemprop="dateCreated datePublished" datetime="2020-12-06T17:49:58+08:00">2020-12-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-12-21 20:05:03" itemprop="dateModified" datetime="2020-12-21T20:05:03+08:00">2020-12-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <ol type="1">
+<li><p><a href="https://leetcode.com/problems/minimum-incompatibility/" target="_blank" rel="noopener">1681 - Minimum Incompatibility (Leetcode Weekly 218)</a></p></li>
+<li><p><a href="https://leetcode.com/problems/minimize-deviation-in-array/" target="_blank" rel="noopener">1675 - Minimize Deviation in Array (Leetcode Weekly 218)</a></p></li>
+<li><p><a href="https://leetcode.com/problems/minimum-moves-to-make-array-complementary/" target="_blank" rel="noopener">1674 - Minimum Moves to Make Array Complementary (Leetcode Weekly 218)</a></p></li>
+</ol>
+<a id="more"></a>
+<h3 id="minimum-incompatibility">1681 - Minimum Incompatibility</h3>
+<p>给定任意序列和正整数<span class="math inline">\(k\)</span>。将其分为<span class="math inline">\(k\)</span>个等大的子集，并且每个子集不包含相同元素。定义每个子集的最大最小值差为<strong>不相容性</strong>。现在要求最小的<strong>不相容性的和</strong>。不存在的情况输出1。数据范围：数组长度不超过<span class="math inline">\(16\)</span>。</p>
+<h4 id="题解">题解</h4>
+<p>假设序列长度为<span class="math inline">\(n\)</span>。枚举预处理出所有的<span class="math inline">\(n/k\)</span>长合法子集，并且统计他们的不相容性。然后使用状态压缩动态规划，将子集的选取状态作为状态，转移方程为：</p>
+<p><span class="math display">\[
+dp[status] = min{dp[status\setminus set] + incompatibility[set]}
+\]</span></p>
+<p>代码如下</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">65536</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> dp[N], n, a[<span class="number">20</span>];</span><br><span class="line">    <span class="built_in">unordered_map</span>&lt;<span class="keyword">int</span>, <span class="keyword">int</span>&gt; fragment;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> i, <span class="keyword">int</span> res, <span class="keyword">int</span> st, <span class="keyword">int</span> diff)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (res == <span class="number">0</span>) &#123;</span><br><span class="line">            fragment[st] = diff;</span><br><span class="line">            <span class="keyword">return</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> j = i + <span class="number">1</span>; j &lt;= n - res; j ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (i &gt; <span class="number">-1</span> &amp;&amp; a[j] == a[i]) <span class="keyword">continue</span>;</span><br><span class="line">            dfs(j, res - <span class="number">1</span>, st | (<span class="number">1</span>&lt;&lt;j), i &gt; <span class="number">-1</span> ? diff + a[j] - a[i] : <span class="number">0</span>);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">debug</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> it: fragment) &#123;</span><br><span class="line">            <span class="keyword">int</span> x = it.first;</span><br><span class="line">            <span class="keyword">while</span> (x) &#123;</span><br><span class="line">                <span class="built_in">printf</span>(<span class="string">"%d"</span>, x&amp;<span class="number">1</span>);</span><br><span class="line">                x &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">" : %d\n"</span>, it.second);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumIncompatibility</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        n = nums.size();</span><br><span class="line">        <span class="keyword">if</span> (n % k != <span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) a[i] = nums[i];</span><br><span class="line">        dfs(<span class="number">-1</span>, n / k, <span class="number">0</span>, <span class="number">0</span>);</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">        dp[<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> st = <span class="number">1</span>; st &lt; (<span class="number">1</span>&lt;&lt;n); st ++) &#123;</span><br><span class="line">            <span class="keyword">if</span> (__builtin_popcount(st) % (n/k) != <span class="number">0</span>) <span class="keyword">continue</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">auto</span> it: fragment) &#123;</span><br><span class="line">                <span class="keyword">int</span> fst = it.first, diff = it.second;</span><br><span class="line">                <span class="keyword">if</span> ((st|fst) != st) <span class="keyword">continue</span>;</span><br><span class="line">                <span class="keyword">int</span> pst = st - fst;</span><br><span class="line">                dp[st] = min(dp[pst] + diff, dp[st]);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span> (dp[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>] &lt; INF) <span class="keyword">return</span> dp[(<span class="number">1</span>&lt;&lt;n)<span class="number">-1</span>];</span><br><span class="line">        <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="minimize-deviation-in-array">1675 - Minimize Deviation in Array</h3>
+<p>给定由<span class="math inline">\(n\)</span>个正整数组成的数组<code>nums</code>。现在对元素执行任意次数的两类操作：</p>
+<ol type="1">
+<li><p>如果元素是偶数，除以2</p></li>
+<li><p>如果元素是奇数，乘2</p></li>
+</ol>
+<p>定义数组的偏移量是数组两个元素之间的最大差值。问进行若干次这样操作后最小可能的偏移量。</p>
+<h4 id="题解-1">题解</h4>
+<p>我们观察到，如果一个数<span class="math inline">\(a=2^k * p\)</span>，那么它可能的取值为<span class="math inline">\(a&#39;=2^x * p (0\leq x \leq k)\)</span>。如果一个数<span class="math inline">\(a=p\)</span>，那么它只可能取<span class="math inline">\(a\)</span>或<span class="math inline">\(2a\)</span>。</p>
+<p>此时我们考虑这样一套策略：从每个数最大的状态开始挑选一些数将其缩小。如果某个情况下最大数为奇数，那么此时的数组拥有最小的偏移量。</p>
+<p>我们使用堆来处理这一策略。每次取得堆顶的最大元素将其除以2，放回去。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minimumDeviation</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">int</span> mi = <span class="number">-1</span>, n = nums.size();</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n; i ++) &#123;</span><br><span class="line">            <span class="keyword">int</span> cur = nums[i];</span><br><span class="line">            <span class="keyword">if</span> (cur % <span class="number">2</span> != <span class="number">0</span>) cur *= <span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span> (mi &lt; <span class="number">0</span> || mi &gt; cur) mi = cur;</span><br><span class="line">            q.push(cur);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans = <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">while</span> (q.size()) &#123;</span><br><span class="line">            <span class="keyword">int</span> cur = q.top(); q.pop();</span><br><span class="line">            <span class="keyword">if</span> (ans &lt; <span class="number">0</span> || ans &gt; cur - mi) &#123;</span><br><span class="line">                ans = cur - mi;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span> (cur % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">                q.push(cur / <span class="number">2</span>);</span><br><span class="line">                mi = min(cur / <span class="number">2</span>, mi);</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="minimum-moves-to-make-array-complementary">1674 - Minimum Moves to Make Array Complementary</h3>
+<p>给定长度为偶数<span class="math inline">\(n\)</span>的数组和<code>limit</code>，对数组中每个元素，可以将它改为1到<code>limit</code>间的任意整数。一个数组如果所有的<code>a[i]</code>和<code>a[n-i-1]</code>的和均相等，那么我们称数组互补。问最少要多少次操作能将数组变为互补的。</p>
+<h4 id="题解-2">题解</h4>
+<p>观察任意数对a和b，不失一般性，假设a &gt; b。我们从2开遍历目标的a+b和x，得到最小操作次数<span class="math inline">\(f(a,b)\)</span>。</p>
+<p><span class="math display">\[
+f(a,b)=\left\{
+\begin{aligned}
+2&amp;, x \leq b \\
+1&amp;, b + 1 \leq x \leq a + b - 1 \\
+0&amp;, x = a + b\\
+1&amp;, a + b + 1\leq x\leq a + limit\\
+2&amp;, a + limit + 1 \leq x
+\end{aligned}
+\right.
+\]</span></p>
+<p>使用差分数组维护遍历期间的总操作代价，从小到大遍历目标和的取值即可找到最小次数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> diff[N * <span class="number">2</span>], n, m;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minMoves</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> limit)</span> </span>&#123;</span><br><span class="line">        n = nums.size();</span><br><span class="line">        m = limit;</span><br><span class="line">        <span class="built_in">memset</span>(diff, <span class="number">0</span>, <span class="keyword">sizeof</span> diff);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; n / <span class="number">2</span>; i ++) &#123;</span><br><span class="line">            <span class="keyword">int</span> t1 = nums[i], t2 = nums[n - i - <span class="number">1</span>];</span><br><span class="line">            <span class="keyword">if</span> (t1 &gt; t2) swap(t1, t2);</span><br><span class="line">            diff[<span class="number">0</span>] += <span class="number">2</span>;</span><br><span class="line">            diff[t1 + <span class="number">1</span>] -= <span class="number">1</span>;</span><br><span class="line">            diff[t1 + t2] -= <span class="number">1</span>;</span><br><span class="line">            diff[t1 + t2 + <span class="number">1</span>] += <span class="number">1</span>;</span><br><span class="line">            diff[t2 + limit + <span class="number">1</span>] += <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> sum = <span class="number">0</span>, ans = n;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt;= limit * <span class="number">2</span>; i ++) &#123;</span><br><span class="line">            sum += diff[i];</span><br><span class="line">            ans = min(ans, sum);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>njzwj2007
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://njzwj.github.io/2020/12/06/leetcode-solution-9/" title="leetcode题解 9">https://njzwj.github.io/2020/12/06/leetcode-solution-9/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/12/05/are-all-harem-animes-trash/" rel="prev" title="后宫动画是糟粕吗？">
+      <i class="fa fa-chevron-left"></i> 后宫动画是糟粕吗？
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/12/13/leetcode-solutions-10/" rel="next" title="Leetcode题解 10 周赛219">
+      Leetcode题解 10 周赛219 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-incompatibility"><span class="nav-number">1.</span> <span class="nav-text">1681 - Minimum Incompatibility</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题解"><span class="nav-number">1.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minimize-deviation-in-array"><span class="nav-number">2.</span> <span class="nav-text">1675 - Minimize Deviation in Array</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题解-1"><span class="nav-number">2.1.</span> <span class="nav-text">题解</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#minimum-moves-to-make-array-complementary"><span class="nav-number">3.</span> <span class="nav-text">1674 - Minimum Moves to Make Array Complementary</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#题解-2"><span class="nav-number">3.1.</span> <span class="nav-text">题解</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">njzwj2007</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">29</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.polossk.com/" title="https:&#x2F;&#x2F;blog.polossk.com" rel="noopener" target="_blank">POLOSSK</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kidozh.com/" title="https:&#x2F;&#x2F;kidozh.com" rel="noopener" target="_blank">KIDOZH</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">njzwj2007</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
