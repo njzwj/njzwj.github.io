@@ -9,6 +9,7 @@ date: 2020-09-10 16:46:17
 
 - [randC0deGen - zhihu](https://www.zhihu.com/people/clumsybear)
 - [randC0deGen - 500px](https://500px.com.cn/randC0deGen)
+- [randC0deGen - Leetcode-cn](https://leetcode-cn.com/u/randc0degen/)
 
 本站内容采用<a rel="license" href="http://creativecommons.org/licenses/by-nc-sa/4.0/">知识共享署名-非商业性使用-相同方式共享 4.0 国际许可协议</a>进行许可，您可以自由使用。
 
