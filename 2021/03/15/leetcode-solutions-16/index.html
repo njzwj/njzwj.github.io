@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon-njzwj.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32-njzwj.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16-njzwj.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"njzwj.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Leetcode 周赛231D、232C、232D。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Leetcode 题解 16">
+<meta property="og:url" content="https://njzwj.github.io/2021/03/15/leetcode-solutions-16/index.html">
+<meta property="og:site_name" content="玄学的日常">
+<meta property="og:description" content="Leetcode 周赛231D、232C、232D。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2021-03-15T03:58:29.000Z">
+<meta property="article:modified_time" content="2021-03-30T06:54:54.286Z">
+<meta property="article:author" content="njzwj2007">
+<meta property="article:tag" content="算法">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://njzwj.github.io/2021/03/15/leetcode-solutions-16/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Leetcode 题解 16 | 玄学的日常</title>
+  
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-138735157-1"></script>
+    <script>
+      if (CONFIG.hostname === location.hostname) {
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-138735157-1');
+      }
+    </script>
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">玄学的日常</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+      <p class="site-subtitle" itemprop="description">日々私たちが过ごしている日常は、実は、奇迹の连続なのかもしれな。</p>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-about">
+
+    <a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>关于</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2021/03/15/leetcode-solutions-16/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Leetcode 题解 16
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2021-03-15 11:58:29" itemprop="dateCreated datePublished" datetime="2021-03-15T11:58:29+08:00">2021-03-15</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2021-03-30 14:54:54" itemprop="dateModified" datetime="2021-03-30T14:54:54+08:00">2021-03-30</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Leetcode 周赛231D、232C、232D。</p>
+<a id="more"></a>
+<h3 id="使所有区间的异或结果为零">1787 使所有区间的异或结果为零</h3>
+<p>我们发现任意k长区间异或和相等需要序列满足k循环性质，也就是说结果串中<code>a[i] = a[i + k]</code>。证明也很简单，<code>a[i]^a[i+1]^...^a[i+k-1] = a[i+1]^a[i+2]^...^a[i+k]</code>，另异或满足交换律，消去两边同项得<code>a[i]=a[i+k]</code>。由于模k下标相同的元素一定会变成相同元素，所以我们只用考虑k个下标即可。</p>
+<p>在每一个位置我们可以将所有元素变为某个已有的元素，或者是变成一个完全没有出现过的新元素。现在规定状态<code>dp[i, s]</code>表示前<code>i</code>项异或和为<code>s</code>的时候最小的操作次数。</p>
+<p>那么对于所有可能的<code>s</code>，我们都可以由<code>i-1</code>位置的最优状态<code>s'</code>，将<code>i</code>位置变为<code>s'^s</code>得到，新增代价为位置<code>i</code>的元素总数。</p>
+<p>我们还可以将<code>i</code>处变为某个已经出现过的数，此时我们需要遍历所有<code>i-1</code>的状态<code>s</code>，并且相应更新现在的状态。</p>
+<p>时间复杂度<span class="math inline">\(O(2^D K + 2^D N) = O(2^D (K + N))\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1025</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0x3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> dp[<span class="number">2</span>][N], cnt[N], n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minChanges</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        n = nums.size();</span><br><span class="line">        <span class="built_in">memset</span>(dp, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dp);</span><br><span class="line">        dp[<span class="number">0</span>][<span class="number">0</span>] = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> pre = <span class="number">1</span>, cur = <span class="number">0</span>, pre_min = <span class="number">0</span>, pre_min_sum = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; k; ++ i) &#123;</span><br><span class="line">            swap(pre, cur);</span><br><span class="line">            <span class="built_in">memset</span>(dp[cur], <span class="number">0x3f</span>, <span class="keyword">sizeof</span> dp[cur]);</span><br><span class="line">            <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="keyword">sizeof</span> cnt);</span><br><span class="line">            <span class="keyword">int</span> sm = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = i; j &lt; n; j += k) &#123;</span><br><span class="line">                ++ cnt[nums[j]];</span><br><span class="line">                ++ sm;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (<span class="number">1</span>&lt;&lt;<span class="number">10</span>); ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (cnt[j] &gt; <span class="number">0</span>) &#123;</span><br><span class="line">                    <span class="keyword">for</span> (<span class="keyword">int</span> u = <span class="number">0</span>; u &lt; (<span class="number">1</span>&lt;&lt;<span class="number">10</span>); ++u) &#123;</span><br><span class="line">                        dp[cur][u ^ j] = min(dp[cur][u ^ j], dp[pre][u] + sm - cnt[j]);</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                    dp[cur][pre_min ^ j] = min(dp[cur][pre_min ^ j], pre_min_sum + sm);</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            pre_min_sum = dp[cur][<span class="number">0</span>];</span><br><span class="line">            pre_min = <span class="number">0</span>;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">int</span> j = <span class="number">0</span>; j &lt; (<span class="number">1</span>&lt;&lt;<span class="number">10</span>); ++j) &#123;</span><br><span class="line">                <span class="keyword">if</span> (dp[cur][j] &lt; pre_min_sum) &#123;</span><br><span class="line">                    pre_min_sum = dp[cur][j];</span><br><span class="line">                    pre_min = j;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> dp[cur][<span class="number">0</span>];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="最大平均通过率">1792 最大平均通过率</h3>
+<p>想了很多全局优化的方法，后来发现这就是个贪心。如果仔细观察一下将分数<code>a/b</code>同时加上一个常数<code>c</code>，随着<code>c</code>的增加，边际效应递减。具体地说：</p>
+<p><span class="math display">\[
+\frac{a + c + 1}{b + c + 1} - \frac{a + c}{b + c} \geq \frac{a + c + 2}{b + c + 2} - \frac{a + c + 1}{b + c + 1} 
+\]</span></p>
+<p>由于该题要求优化所有分数的均值（与优化和等价），那么每次找到增加一个常数使得分数增加绝对值最大的操作一定是最优解。使用堆维护当前最值得进行的操作即可。时间复杂度<span class="math inline">\(O(K\log{N})\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">diff</span><span class="params">(<span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">double</span> r1 = (<span class="keyword">double</span>)a / b;</span><br><span class="line">        <span class="keyword">double</span> r2 = (<span class="keyword">double</span>)(a + <span class="number">1</span>) / (b + <span class="number">1</span>);</span><br><span class="line">        <span class="keyword">return</span> r2 - r1;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">Node</span> &#123;</span></span><br><span class="line">        <span class="keyword">int</span> a, b;</span><br><span class="line">        <span class="keyword">double</span> d;</span><br><span class="line">        <span class="keyword">bool</span> <span class="keyword">operator</span> &lt; (<span class="keyword">const</span> Node &amp; rhs) <span class="keyword">const</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> d &lt; rhs.d;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;;</span><br><span class="line">    <span class="function"><span class="keyword">double</span> <span class="title">maxAverageRatio</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&gt;&amp; classes, <span class="keyword">int</span> extraStudents)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;Node&gt; q;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">auto</span> c: classes) &#123;</span><br><span class="line">            <span class="keyword">int</span> a = c[<span class="number">0</span>], b = c[<span class="number">1</span>];</span><br><span class="line">            q.push((Node)&#123;a, b, diff(a, b)&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; extraStudents; ++i) &#123;</span><br><span class="line">            Node cur = q.top(); q.pop();</span><br><span class="line">            <span class="keyword">int</span> a = cur.a, b = cur.b;</span><br><span class="line">            q.push((Node)&#123;a + <span class="number">1</span>, b + <span class="number">1</span>, diff(a + <span class="number">1</span>, b + <span class="number">1</span>)&#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">double</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span> (q.size()) &#123;</span><br><span class="line">            Node cur = q.top(); q.pop();</span><br><span class="line">            ans += (<span class="keyword">double</span>)cur.a / cur.b;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans / classes.size();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h3 id="好子数组的最大分数">1793 好子数组的最大分数</h3>
+<p>数组的得分由长度和最小值的乘积决定。我们先回忆一下区间最小值的特点——固定一个端点，它的大小随另一个端点具有单调性。区间长度与之有相反的单调性。</p>
+<p>由于子区间已经到包含k，可以从k开始向左右扩展双指针，尽量保持两边区间最小值均衡。期间更新答案。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span> + <span class="number">10</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">int</span> m1[N], m2[N], n;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">maximumScore</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        n = nums.size();</span><br><span class="line">        <span class="built_in">memset</span>(m1, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> m1);</span><br><span class="line">        <span class="built_in">memset</span>(m2, <span class="number">0x3f</span>, <span class="keyword">sizeof</span> m2);</span><br><span class="line">        m1[k] = m2[k] = nums[k];</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k + <span class="number">1</span>; i &lt; n; ++ i) m1[i] = min(m1[i - <span class="number">1</span>], nums[i]);</span><br><span class="line">        <span class="keyword">for</span> (<span class="keyword">int</span> i = k - <span class="number">1</span>; i &gt;= <span class="number">0</span>; -- i) m2[i] = min(m2[i + <span class="number">1</span>], nums[i]);</span><br><span class="line">        <span class="keyword">int</span> st = k, ed = k;</span><br><span class="line">        <span class="keyword">int</span> ans = nums[k];</span><br><span class="line">        <span class="keyword">for</span> (;st &gt; <span class="number">0</span> || ed &lt; n - <span class="number">1</span>;) &#123;</span><br><span class="line">            <span class="keyword">if</span> (st &gt; <span class="number">0</span> &amp;&amp; ed &lt; n - <span class="number">1</span>) &#123;</span><br><span class="line">                <span class="keyword">if</span> (m1[ed + <span class="number">1</span>] &gt;= m2[st - <span class="number">1</span>]) ++ ed;</span><br><span class="line">                <span class="keyword">else</span> -- st;</span><br><span class="line">            &#125; <span class="keyword">else</span> <span class="keyword">if</span> (st == <span class="number">0</span>) &#123; ++ ed; &#125;</span><br><span class="line">            <span class="keyword">else</span> <span class="keyword">if</span> (ed == n - <span class="number">1</span>) &#123; -- st; &#125;</span><br><span class="line">            ans = max(ans, min(m2[st], m1[ed]) * (ed - st + <span class="number">1</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>njzwj2007
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://njzwj.github.io/2021/03/15/leetcode-solutions-16/" title="Leetcode 题解 16">https://njzwj.github.io/2021/03/15/leetcode-solutions-16/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/%E7%AE%97%E6%B3%95/" rel="tag"># 算法</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/01/29/leetcode-solutions-15/" rel="prev" title="Leetcode 题解 15">
+      <i class="fa fa-chevron-left"></i> Leetcode 题解 15
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/03/21/leetcode-solutions-17/" rel="next" title="Leetcode 题解 17">
+      Leetcode 题解 17 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#使所有区间的异或结果为零"><span class="nav-number">1.</span> <span class="nav-text">1787 使所有区间的异或结果为零</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最大平均通过率"><span class="nav-number">2.</span> <span class="nav-text">1792 最大平均通过率</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好子数组的最大分数"><span class="nav-number">3.</span> <span class="nav-text">1793 好子数组的最大分数</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">njzwj2007</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">36</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-name">分类</span>
+      </div>
+      <div class="site-state-item site-state-tags">
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license motion-element" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+  <div class="links-of-blogroll motion-element">
+    <div class="links-of-blogroll-title"><i class="fa fa-link fa-fw"></i>
+      Links
+    </div>
+    <ul class="links-of-blogroll-list">
+        <li class="links-of-blogroll-item">
+          <a href="https://blog.polossk.com/" title="https:&#x2F;&#x2F;blog.polossk.com" rel="noopener" target="_blank">POLOSSK</a>
+        </li>
+        <li class="links-of-blogroll-item">
+          <a href="https://kidozh.com/" title="https:&#x2F;&#x2F;kidozh.com" rel="noopener" target="_blank">KIDOZH</a>
+        </li>
+    </ul>
+  </div>
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2016 – 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">njzwj2007</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

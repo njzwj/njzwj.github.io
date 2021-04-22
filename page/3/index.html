@@ -160,6 +160,327 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2020/06/06/manacher-algorithm/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/06/manacher-algorithm/" class="post-title-link" itemprop="url">Manacher, O(n)的回文串查找算法</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-06 00:31:17" itemprop="dateCreated datePublished" datetime="2020-06-06T00:31:17+08:00">2020-06-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>给定字符串<span class="math inline">\(S={S_1, S_2, \ldots, S_n}\)</span>，如何计算<span class="math inline">\(S\)</span>的所有的回文子串？一种朴素的算法具有<span class="math inline">\(O(n^2)\)</span>的时间复杂度。它通过一个数组<span class="math inline">\(d_i\)</span>来记录以<span class="math inline">\(S_i\)</span>为中心的回文串的“半径”。<span class="math inline">\(d_i\)</span>表示<span class="math inline">\(S_{i - d_i}, \ldots, S_i, \ldots, S_{i + d_i}\)</span>是一个回文串，因而根据回文串的性质能得到：<span class="math inline">\(S_{i-d_i + j} = S_{i + d_i - j}\)</span>。在朴素算法中，程序枚举字符串的中心<span class="math inline">\(i\)</span>，向两边查找使得<span class="math inline">\(S_{i+j}=S_{i-j}\)</span>的最大<span class="math inline">\(j\)</span>值，<span class="math inline">\(j_{max}\)</span>即为<span class="math inline">\(d_i\)</span>。不难得出该算法具有<span class="math inline">\(O(n^2)\)</span>的时间复杂度。</p>
+<p>细心的读者或许会注意到“以半径来描述的回文串”只能描述长度为<span class="math inline">\(2k+1\)</span>的回文串。下文中将会介绍一个简单的变换使得所有的回文串都被归纳到这种情况。</p>
+<p>Manacher算法是一个<span class="math inline">\(O(n)\)</span>时间复杂度的用于求解回文串的算法。它很好地利用了查找到的回文串的对称性质，以及已经查找过的回文串信息来加速计算。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/06/manacher-algorithm/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2020/06/03/use-onedrive-as-a-personal-git-server/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/03/use-onedrive-as-a-personal-git-server/" class="post-title-link" itemprop="url">将Onedrive作为个人Git服务器</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-03 09:54:25" itemprop="dateCreated datePublished" datetime="2020-06-03T09:54:25+08:00">2020-06-03</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">手册</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Onedrive用于同步项目的最朴素的方式应该就是把项目文件夹直接放进Onedrive内，交给电脑自动同步，然而这样的弊端也很明显，Onedrive会不加区分地同步所有项目下的文件。如果你正在开发一个nodejs项目，并且使用npm作为包管理器，那么node_modules文件夹下面成千上万的文件将会花掉一辈子的时间来同步。</p>
+<p>最近我发现了一种可以使用Git和Onedrive协同进行多台设备间项目同步的方法。核心思想就是将Onedrive作为一个远端仓库，在多台设备中pull和push来实现项目的同步。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/03/use-onedrive-as-a-personal-git-server/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2020/06/02/quick-guide-for-wsl-debian/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/02/quick-guide-for-wsl-debian/" class="post-title-link" itemprop="url">WSL下Debian快速配置指南</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-02 15:53:27" itemprop="dateCreated datePublished" datetime="2020-06-02T15:53:27+08:00">2020-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%89%8B%E5%86%8C/" itemprop="url" rel="index"><span itemprop="name">手册</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>Windows比较缺乏广泛使用而且易用性强的软件包管理器（有软件包管理器，如chocolatey），环境配置简直就是噩梦。尽管使用各种手段在Windows上做点小开发不是不可能，但是现在既然Microsoft免费送了个WSL，就顺势选择使用WSL节约时间。只要不是追求效率编译什么超大项目，WSL已经够用。这里记下了WSL Debian的快速配置备忘。</p>
+          <!--noindex-->
+            <div class="post-button">
+              <a class="btn" href="/2020/06/02/quick-guide-for-wsl-debian/#more" rel="contents">
+                阅读全文 &raquo;
+              </a>
+            </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2020/06/02/migrate-to-hexo-4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="njzwj2007">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="玄学的日常">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2020/06/02/migrate-to-hexo-4/" class="post-title-link" itemprop="url">迁移到Hexo4</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-06-02 10:41:08" itemprop="dateCreated datePublished" datetime="2020-06-02T10:41:08+08:00">2020-06-02</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新于</span>
+                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
+              </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E9%9A%8F%E7%AC%94/" itemprop="url" rel="index"><span itemprop="name">随笔</span></a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <p>最近趁着WSL的便利把博客整个迁移到Hexo4。Hexo4的功能比之前都要丰富一些，很多依赖插件的功能都正式地被放进了Hexo，这样就不用面对长年不配置导致忘记怎么配置的博客项目了。</p>
+<p>之前的文章因为兼容性问题，没法直接迁移进来。我会手工修改后陆续加进来。</p>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
     <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2019/07/08/leetcode-solutions-3/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -662,338 +983,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2017/07/15/kmp-notes/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="njzwj2007">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玄学的日常">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/07/15/kmp-notes/" class="post-title-link" itemprop="url">KMP学习笔记</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-07-15 17:46:53" itemprop="dateCreated datePublished" datetime="2017-07-15T17:46:53+08:00">2017-07-15</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>KMP算法是一种优于暴力匹配的字符串匹配算法。该算法在一个给定的目标串<span class="math inline">\(S\)</span>中，确定模式串<span class="math inline">\(P\)</span>是否是<span class="math inline">\(S\)</span>的子串，并且得到位置。
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/07/15/kmp-notes/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2017/06/29/partition-tree-notes-1/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="njzwj2007">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玄学的日常">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/06/29/partition-tree-notes-1/" class="post-title-link" itemprop="url">划分树学习笔记01</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-29 18:00:00" itemprop="dateCreated datePublished" datetime="2017-06-29T18:00:00+08:00">2017-06-29</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p>划分树是一种基于线段树的数据结构，用于快速求出序列区间第k大（小）的值。本文将从划分树的构建动机、性质和具体实现来说明划分树的基本原理和使用方法。阅读本文前需要掌握线段树的有关知识。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/06/29/partition-tree-notes-1/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2017/06/28/plug-dp-101/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="njzwj2007">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玄学的日常">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2017/06/28/plug-dp-101/" class="post-title-link" itemprop="url">插头dp从入门到不会</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2017-06-28 12:08:27" itemprop="dateCreated datePublished" datetime="2017-06-28T12:08:27+08:00">2017-06-28</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h1 id="题目清单">题目清单</h1>
-<ul>
-<li>POJ1185 炮兵布阵（状态压缩dp）</li>
-<li>HDU1693 闭合线路统计（插头dp）</li>
-<li>POJ2411 平面骨牌密铺（状态压缩dp/轮廓线更新）</li>
-<li>HDU1565 矩阵选数（轮廓线更新）</li>
-<li>HDU2167 矩阵选数（比上一题更严格的条件）（轮廓线更新）</li>
-</ul>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2017/06/28/plug-dp-101/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
-    <link itemprop="mainEntityOfPage" href="https://njzwj.github.io/2016/07/22/optimal-rate-of-spanning-tree-dinkelbach/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="njzwj2007">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="玄学的日常">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2016/07/22/optimal-rate-of-spanning-tree-dinkelbach/" class="post-title-link" itemprop="url">「POJ2728」 最优比率生成树 二分/DinkelBach</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">发表于</span>
-
-              <time title="创建时间：2016-07-22 00:38:45" itemprop="dateCreated datePublished" datetime="2016-07-22T00:38:45+08:00">2016-07-22</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2020-11-04 15:00:07" itemprop="dateModified" datetime="2020-11-04T15:00:07+08:00">2020-11-04</time>
-              </span>
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-folder"></i>
-              </span>
-              <span class="post-meta-item-text">分类于</span>
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/%E7%AE%97%E6%B3%95/" itemprop="url" rel="index"><span itemprop="name">算法</span></a>
-                </span>
-            </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <p><a href="http://poj.org/problem?id=2728" target="_blank" rel="noopener" class="uri">http://poj.org/problem?id=2728</a></p>
-<p>已知任意两座城市之间修水管的距离和花费，求一种连通所有城市的连接方法，使得单位距离花费最小。这是一个<strong>0-1分数规划问题</strong>。</p>
-          <!--noindex-->
-            <div class="post-button">
-              <a class="btn" href="/2016/07/22/optimal-rate-of-spanning-tree-dinkelbach/#more" rel="contents">
-                阅读全文 &raquo;
-              </a>
-            </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1063,7 +1052,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">32</span>
+          <span class="site-state-item-count">36</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
