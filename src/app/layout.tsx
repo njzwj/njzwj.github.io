@@ -1,7 +1,7 @@
-import Footer from "@/app/_components/footer";
-import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 import type { Metadata } from "next";
 import { Noto_Sans, Noto_Serif, Noto_Sans_Mono } from "next/font/google";
+import Footer from "@/app/components/footer";
+import { CMS_NAME, HOME_OG_IMAGE_URL } from "@/lib/constants";
 
 import "./globals.css";
 
@@ -70,8 +70,10 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
-        <div className="min-h-screen font-sans">{children}</div>
-        <Footer />
+        <div className="flex flex-col min-h-screen justify-between font-sans">
+          <div>{children}</div>
+          <Footer />
+        </div>
       </body>
     </html>
   );
