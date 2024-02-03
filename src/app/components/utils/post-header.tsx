@@ -7,7 +7,7 @@ type Props = {
 
 export const PostHeader = ({ title, date }: Props) => (
   <div className="max-w-3xl mx-auto">
-    <h1 className="text-2xl md:text-4xl tracking-tighter leading-tight">
+    <h1 className="text-2xl md:text-4xl font-semibold tracking-tighter leading-tight">
       {title}
     </h1>
     <div className="mb-10">

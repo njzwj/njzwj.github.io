@@ -15,6 +15,7 @@ export const PostList = ({ posts }: Props) => {
               key={post.slug}
               title={post.title}
               date={post.date}
+              excerpt={post.excerpt}
               slug={post.slug}
             />
           ))

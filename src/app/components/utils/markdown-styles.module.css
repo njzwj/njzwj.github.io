@@ -9,10 +9,18 @@
   @apply my-6;
 }
 
+.markdown ul {
+  @apply my-6 list-[circle] list-inside;
+}
+
+.markdown ol {
+  @apply my-6 list-decimal list-inside;
+}
+
 .markdown h2 {
-  @apply text-2xl mt-12 mb-4 leading-snug;
+  @apply text-xl md:text-2xl font-semibold mt-12 mb-4 leading-snug;
 }
 
 .markdown h3 {
-  @apply text-xl mt-8 mb-4 leading-snug;
+  @apply text-lg md:text-xl font-semibold mt-8 mb-4 leading-snug;
 }
