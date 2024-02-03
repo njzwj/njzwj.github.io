@@ -51,7 +51,6 @@ export function generateMetadata({ params }: Params): Metadata {
   return {
     openGraph: {
       title,
-      images: [post.ogImage.url],
     },
   };
 }

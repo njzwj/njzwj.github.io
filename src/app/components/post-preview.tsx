@@ -10,7 +10,7 @@ type Props = {
 export const PostPreview = ({ title, date, slug }: Props) => {
   return (
     <div className="mb-4 border-l-2 border-gray-400 pl-4">
-      <h3 className="text-xl font-semibold">
+      <h3 className="md:text-xl font-semibold">
         <Link
           as={`/posts/${slug}`}
           href="/posts/[slug]"
@@ -19,7 +19,7 @@ export const PostPreview = ({ title, date, slug }: Props) => {
           {title}
         </Link>
       </h3>
-      <div className="text-md">
+      <div className="text-sm md:text-md">
         <DateFormatter dateString={date} />
       </div>
     </div>
