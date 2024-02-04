@@ -1,8 +1,7 @@
-export const EXAMPLE_PATH = "blog-starter";
-export const CMS_NAME = "Markdown";
-export const HOME_OG_IMAGE_URL =
-  "https://og-image.vercel.app/Next.js%20Blog%20Starter%20Example.png?theme=light&md=1&fontSize=100px&images=https%3A%2F%2Fassets.vercel.com%2Fimage%2Fupload%2Ffront%2Fassets%2Fdesign%2Fnextjs-black-logo.svg";
-
 // For myblog
 export const BLOG_NAME = "randc0degen's blog";
 export const BLOG_DESCRIPTION = "Think twice. Code once.";
+export const STATIC_NAV_ITEMS = [
+  { title: "Home", href: "/"},
+  { title: "About", href: "/about" },
+];
