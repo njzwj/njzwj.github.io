@@ -37,3 +37,4 @@ next-env.d.ts
 
 # jpg assets
 /public/assets/**/*.jpg
+/public/assets/**/*.png
