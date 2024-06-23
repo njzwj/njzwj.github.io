@@ -5,6 +5,7 @@
 .markdown p,
 .markdown ul,
 .markdown ol,
+.markdown figure,
 .markdown blockquote {
   @apply my-6;
 }
@@ -23,4 +24,15 @@
 
 .markdown h3 {
   @apply text-lg md:text-xl font-semibold mt-8 mb-4 leading-snug;
+}
+
+.markdown figcaption {
+  @apply text-sm text-gray-500 mt-2 italic;
+  text-align: center; /* Add this line to center the figcaption */
+}
+
+.markdown img {
+  max-height: 600px;
+  margin: 0 auto; /* Add this line to center the image */
+  display: block; /* Add this line to center the image */
 }

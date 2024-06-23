@@ -6,6 +6,7 @@
     "start": "next start"
   },
   "dependencies": {
+    "@microflash/rehype-figure": "^2.1.0",
     "classnames": "^2.5.1",
     "clsx": "^2.1.0",
     "date-fns": "^3.3.1",
@@ -13,8 +14,12 @@
     "next": "^14.2.4",
     "react": "^18",
     "react-dom": "^18",
+    "rehype-figure": "^1.0.1",
+    "rehype-stringify": "^10.0.0",
     "remark": "^15.0.1",
-    "remark-html": "^16.0.1"
+    "remark-gfm": "^4.0.0",
+    "remark-html": "^16.0.1",
+    "remark-rehype": "^11.1.0"
   },
   "devDependencies": {
     "@types/node": "^20",
