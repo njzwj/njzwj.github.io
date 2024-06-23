@@ -4,28 +4,28 @@ date: "2024-02-05T12:00:00Z"
 excerpt: "Walk through suspended construction site in a freezing cold day."
 ---
 
-It's not so common to see snow in my hometown, Nanjing city. But this year the cold air is clearly stronger than ever, making most areas from north to middle of China covered by snow. I hear railways and airlines have been delayed or canceled since Sunday. I was lucky to get home last Friday.
+It's uncommon to see snow in my hometown, Nanjing. However, this year, the cold air is stronger than ever, blanketing most areas from northern to central China in snow. I've heard that railways and airlines have faced delays or cancellations since Sunday. Fortunately, I managed to get home last Friday.
 
-Chinese Public Official Holidays usually take some of the Saturdays and Sundays nearby to form a slightly longer holiday, to cover the fact that there is only a few dayoffs. This year is no different. As a result, we all have to work 6 consecutive days before and after the 8-day holiday. To make things worse, the new year eve becomes work day this year.
+Chinese Public Official Holidays often incorporate nearby Saturdays and Sundays to create slightly longer breaks, compensating for the limited number of days off. This year is no different. Consequently, we have to work six consecutive days before and after the 8-day holiday. To make matters worse, New Year's Eve falls on a workday this year.
 
-I have been absent-minded working from home. Because I have absolutely no idea what to do along with my family. Nor do they have any idea. Also the fact that I have to work 6 days in a row bothers me. After lunch I decided to walk around for about half an hour before the meeting. So I took my camera and went out.
+I've been absent-minded while working from home, mainly because I have no idea what to do with my family during this time. They are equally clueless. The prospect of working six days in a row also bothers me. After lunch, I decided to take a half-hour walk before my next meeting. I grabbed my camera and headed out.
 
-Outside was freezing cold, even at the middle of a day. It was cloudy. Everything looked plain without shadow. Near my home is the construction site of Nanjing Metro. They are building a new metro station. But it suspends from time to time due to the poor funding. This is quite common for the construction programmes in recent years. Local government is heavily debted and the constructors couldn't get paid sometimes.
+The outside was freezing cold, even in the middle of the day. It was cloudy, and everything looked plain without shadows. Near my home is a construction site for the Nanjing Metro, where they are building a new station. However, construction halts frequently due to poor funding, a common issue for projects in recent years. The local government is heavily in debt, and sometimes the constructors don't get paid.
 
-Not to my surprise, the metro wasn't in construction. Probably because the lunar new year. Construction workers work even at weekends, but go home earlier to prepare for lunar new year. Most of them come from rural areas. So it takes very long time for them to get through a long way from major cities to their hometown. Besides, this is probably the only chance for them to get reunioned with their families.
+As expected, the metro construction was paused, likely due to the upcoming Lunar New Year. Construction workers often work weekends but go home early to prepare for the holiday. Most of them come from rural areas, so it takes a long time for them to travel from major cities to their hometowns. This is probably their only chance to reunite with their families.
 
 ![Remained houses](/assets/blog/2024-02-05-a-half-hour-vacation/house.webp)
 
-Near the construction site there still remains the ruins of the houses that once someone lived in. They are waited to be cleaned up as the construction proceeds. Fireweed scatters around the ruins. Nearly, vehicles park on the muddy ground. They all covered by thin snow. I wonder where the original residents went. Maybe somewhere similar, or maybe they got conpensated with a decent apartment. I woundn't know.
+Near the construction site, the ruins of houses that once stood there remain, waiting to be cleared as construction progresses. Fireweed scatters around the ruins, and vehicles parked on the muddy ground are covered by a thin layer of snow. I wonder where the original residents went—perhaps to similar places, or maybe they were compensated with decent apartments. I wouldn't know.
 
 ![Vehicles](/assets/blog/2024-02-05-a-half-hour-vacation/vehicles.webp)
 
-The construction site is covered with temporary fences so I couldn't see what's inside. There are 2 cranes inside both around 50 meters high. One or two turtle doves fly by and rest on the top of crane.
+The construction site is enclosed by temporary fences, so I couldn't see inside. Two cranes, each about 50 meters high, stand within the site. Occasionally, a turtle dove flies by and rests on top of a crane.
 
-Few buses and people were passing by. The vacancy brought up some loneliness. The loneliness made me feel free. At that particular moment, I was focusing on observing. At one side of the road, a tree with only the trunk left stood there. Just like the crane. The frosty wind makes the atmosphere even more depressed, just like the plunging stock market since 2024.
+Few buses and people were passing by, and the vacancy evoked a sense of loneliness. This loneliness, however, made me feel free. At that moment, I was focused on observing. On one side of the road, a tree with only its trunk left stood there, resembling the crane. The frosty wind added to the atmosphere's depression, much like the plunging stock market since 2024.
 
-![Vehicles](/assets/blog/2024-02-05-a-half-hour-vacation/cranes-and-tree.webp)
+![Cranes and tree](/assets/blog/2024-02-05-a-half-hour-vacation/cranes-and-tree.webp)
 
-Half an hour was short. It soon ran out. I forced myself to take photos on everything I might be interested in, without hesitation. Then I had to stride toward home.
+The half-hour passed quickly. I forced myself to take photos of everything that caught my interest, without hesitation. Then, I headed back home.
 
-In the half-hour vacation, I found a moment of peace. The empty houses and still cranes showed me how fast life changes, especially the new challenges brought to me during the past few years. Going home, I remembered to enjoy the quiet moments in life.
+During this brief walk, I found a moment of peace. The empty houses and still cranes reminded me of how fast life changes, especially with the new challenges of the past few years. As I returned home, I remembered to cherish the quiet moments in life.

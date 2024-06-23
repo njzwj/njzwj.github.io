@@ -20,9 +20,10 @@ export function getPostBySlug(slug: string) {
 
 export function getAllPosts(): Post[] {
   const slugs = getPostSlugs();
-  const posts = slugs
-    .map((slug) => getPostBySlug(slug))
-    // sort posts by date in descending order
-    .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
+  const posts = slugs // if env is development, return all posts, otherwise filter out the one with "_draft" in the filename
+  .filter((slug) => process.env.NODE_ENV === "development" || !slug.includes("_draft"))
+  .map((slug) => getPostBySlug(slug))
+  // sort posts by date in descending order
+  .sort((post1, post2) => (post1.date > post2.date ? -1 : 1));
   return posts;
 }
