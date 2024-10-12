@@ -3,6 +3,7 @@ import { Noto_Sans, Noto_Serif, Noto_Sans_Mono } from "next/font/google";
 import Footer from "@/app/components/footer";
 
 import "./globals.css";
+import { NextUIProvider } from "@nextui-org/react";
 
 const sans = Noto_Sans({
   subsets: ["latin", "latin-ext"],
@@ -21,7 +22,7 @@ const mono = Noto_Sans_Mono({
 });
 
 export const metadata: Metadata = {
-  title: `randC0deGen's Blog`,
+  title: `RandC0deGen's Blog`,
   description: `A blog about web development, programming, and other tech-related topics, by randC0deGen.`,
 };
 
@@ -56,10 +57,12 @@ export default function RootLayout({
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
       <body className={`${sans.variable} ${serif.variable} ${mono.variable}`}>
-        <div className="flex flex-col min-h-screen justify-between font-sans">
-          <div>{children}</div>
-          <Footer />
-        </div>
+        <NextUIProvider>
+          <div className="flex flex-col min-h-screen justify-between font-sans">
+            <div>{children}</div>
+            <Footer />
+          </div>
+        </NextUIProvider>
       </body>
     </html>
   );
