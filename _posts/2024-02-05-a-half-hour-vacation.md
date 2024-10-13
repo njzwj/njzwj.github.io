@@ -2,6 +2,7 @@
 title: "A half-hour vacation"
 date: "2024-02-05T12:00:00Z"
 excerpt: "Walk through suspended construction site in a freezing cold day."
+coverImage: "/assets/blog/2024-02-05-a-half-hour-vacation/house.webp"
 ---
 
 It's uncommon to see snow in my hometown, Nanjing. However, this year, the cold air is stronger than ever, blanketing most areas from northern to central China in snow. I've heard that railways and airlines have faced delays or cancellations since Sunday. Fortunately, I managed to get home last Friday.
