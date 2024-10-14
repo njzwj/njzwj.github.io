@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import { Body, Footer, Header, PostList } from "@/app/components";
 import { getAllPosts } from "@/lib/api";
+import { useTheme } from "next-themes";
 
 export const metadata: Metadata = {
   title: `RandC0deGen's Blog ｜ RDCG`,
@@ -17,7 +18,7 @@ export default function Index() {
       <Body>
         <div className="flex flex-col items-center gap-8">
           <Card isFooterBlurred className="max-h-96">
-            <CardFooter className="absolute z-10 bottom-0 flex-col !items-start border-t-1 bg-white/60 border-zinc-100/50 dark:bg-black/40 dark:border-default-100">
+            <CardFooter className="absolute z-10 bottom-0 flex-col !items-start border-t-1 bg-white/60 border-zinc-100/50 dark:bg-black/40 dark:border-default-300">
               <h1 className="text-foreground font-semibold">
                 Welcome to RandC0deGen's Blog!
               </h1>

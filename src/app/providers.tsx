@@ -6,7 +6,7 @@ export default function Providers(
 ) {
   return (
     <NextUIProvider>
-      <ThemeProvider>
+      <ThemeProvider attribute="class">
         {children}
       </ThemeProvider>
     </NextUIProvider>

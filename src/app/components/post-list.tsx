@@ -29,7 +29,7 @@ function PostCard (
       onClick={() => window.location.href = `/posts/${slug}`}
       className="min-h-[300px] shadow-lg"
     >
-      <CardFooter className="absolute z-10 bottom-0 flex-col !items-start border-t-1 bg-white/60 border-zinc-100/50 dark:bg-black/40 dark:border-default-100">
+      <CardFooter className="absolute z-10 bottom-0 flex-col !items-start border-t-1 bg-white/60 border-zinc-100/50 dark:bg-black/40 dark:border-default-300">
         <h4 className="text-md font-bold text-left">{title}</h4>
         <p className="text-small text-default-500">
           {new Date(date).toLocaleDateString("en-US")}
