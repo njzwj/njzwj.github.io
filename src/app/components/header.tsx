@@ -26,9 +26,9 @@ const Header = (
       onMenuOpenChange={setIsMenuOpen}
     >
       <NavbarContent className="sm:hidden" justify="start">
-        <NavbarMenuToggle aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
+        <NavbarMenuToggle className="text-foreground" aria-label={isMenuOpen ? "Close menu" : "Open menu"} />
         <NavbarBrand>
-          <p className="font-bold text-inherit">
+          <p className="font-bold text-foreground">
             {BLOG_NAME}
           </p>
         </NavbarBrand>
@@ -36,7 +36,7 @@ const Header = (
 
       <NavbarContent className="hidden sm:flex gap-3" justify="center">
         <NavbarBrand>
-          <p className="font-bold text-inherit">
+          <p className="font-bold text-foreground">
             {BLOG_NAME}
           </p>
         </NavbarBrand>
