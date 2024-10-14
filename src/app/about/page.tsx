@@ -5,7 +5,7 @@ import { Header, Footer, Body } from "@/app/components";
 
 const resumeTitleStyles = "font-semibold text-gray-500 basis-full text-sm m-0 md:text-right md:basis-1/3 md:pr-2 md:mt-1";
 const whereStyles = "text-sm text-green-500";
-const resumeContentStyles = "text-gray-900 border-gray-400 basis-full mt-1 mb-2 text-sm pl-2 md:basis-2/3 md:border-l";
+const resumeContentStyles = "text-foreground border-gray-400 basis-full mt-1 mb-2 text-sm pl-2 md:basis-2/3 md:border-l";
 
 export default async function About() {
   return (

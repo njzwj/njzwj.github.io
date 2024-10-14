@@ -1,5 +1,3 @@
-"use client";
-
 export default function Body(
   { children }: Readonly<{ children: React.ReactNode; }>
 ) {

@@ -6,6 +6,7 @@ import {
   Card, CardHeader, CardBody, CardFooter,
   Divider, Link, Image
 } from "@nextui-org/react";
+import { useEffect, useState } from "react";
 
 type Props = {
   posts: Post[];
@@ -15,6 +16,9 @@ function PostCard (
   { title, date, excerpt, slug, coverImage }:
   { title: string, date: string, excerpt: string, slug: string, coverImage: string }
 ) {
+  const [mounted, setMounted] = useState(false);
+  useEffect(() => setMounted(true), []);
+  if (!mounted) return null;
 
   const coverImagePath = coverImage || "/assets/hero/wooden-bench.webp";
 
