@@ -100,7 +100,8 @@ const Header = (
           defaultSelected
           size="lg"
           color="default"
-          onChange={() => setTheme(theme === "dark" ? "light" : "dark")}
+          isSelected={theme === "light"}
+          onValueChange={(isChecked: boolean) => setTheme(isChecked ? "light" : "dark")}
           startContent={<SunIcon />}
           endContent={<MoonIcon />}
         />
