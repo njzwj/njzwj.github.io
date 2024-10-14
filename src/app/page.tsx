@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Card, CardFooter, Image } from "@nextui-org/react";
 import { Body, Footer, Header, PostList } from "@/app/components";
 import { getAllPosts } from "@/lib/api";
-import { useTheme } from "next-themes";
 
 export const metadata: Metadata = {
   title: `RandC0deGen's Blog ｜ RDCG`,
