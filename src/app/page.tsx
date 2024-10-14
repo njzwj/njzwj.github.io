@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { Card, CardFooter, Image } from "@nextui-org/react";
-import Header from "./components/header";
-import Body from "./components/body";
-import { PostList } from "./components/post-list";
+import { Body, Footer, Header, PostList } from "@/app/components";
 import { getAllPosts } from "@/lib/api";
-import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: `RandC0deGen's Blog ｜ RDCG`,
