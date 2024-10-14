@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import { getAllPosts, getPostBySlug } from "@/lib/api";
-import { Params } from "next/dist/shared/lib/router/utils/route-matcher";
 import { notFound } from "next/navigation";
 import markdownToHtml from "@/lib/markdownToHtml";
 import { Header, Body, Footer } from "@/app/components";
@@ -37,6 +36,12 @@ export default async function Post({ params }: Params) {
       <Footer />
     </section>
   );
+};
+
+type Params = {
+  params: {
+    slug: string;
+  };
 };
 
 export function generateMetadata({ params }: Params): Metadata {
