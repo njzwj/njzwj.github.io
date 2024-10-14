@@ -4,6 +4,7 @@ import Header from "./components/header";
 import Body from "./components/body";
 import { PostList } from "./components/post-list";
 import { getAllPosts } from "@/lib/api";
+import Footer from "./components/footer";
 
 export const metadata: Metadata = {
   title: `RandC0deGen's Blog ｜ RDCG`,
@@ -36,6 +37,7 @@ export default function Index() {
           <PostList posts={allPosts} />
         </div>
       </Body>
+      <Footer />
     </section>
   );
 }
