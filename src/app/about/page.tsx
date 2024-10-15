@@ -10,7 +10,7 @@ const resumeContentStyles = "text-foreground border-gray-400 basis-full mt-1 mb-
 export default async function About() {
   return (
     <section>
-      <Header />
+      <Header active="About" />
       <Body>
         <article className="max-w-2xl mx-auto md-20">
           <div className="flex flex-col items-center w-full">

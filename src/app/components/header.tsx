@@ -57,8 +57,6 @@ const Header = (
 
   // After mounting, set the mounted state to true.
   useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
-
   return (
     <Navbar
       isBordered
@@ -95,17 +93,19 @@ const Header = (
         }
       </NavbarContent>
 
-      <NavbarContent justify="end">
-        <Switch
-          defaultSelected
-          size="lg"
-          color="default"
-          isSelected={theme === "light"}
-          onValueChange={(isChecked: boolean) => setTheme(isChecked ? "light" : "dark")}
-          startContent={<SunIcon />}
-          endContent={<MoonIcon />}
-        />
-      </NavbarContent>
+      { mounted && (
+        <NavbarContent justify="end">
+          <Switch
+            defaultSelected
+            size="lg"
+            color="default"
+            isSelected={theme === "light"}
+            onValueChange={(isChecked: boolean) => setTheme(isChecked ? "light" : "dark")}
+            startContent={<SunIcon />}
+            endContent={<MoonIcon />}
+          />
+        </NavbarContent>
+      )}
 
       <NavbarMenu>
         {
