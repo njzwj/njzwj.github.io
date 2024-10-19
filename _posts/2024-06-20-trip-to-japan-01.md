@@ -1,7 +1,7 @@
 ---
 title: "日本旅行（一） 池袋，歌舞伎町和台场冬季烟花"
 date: "2024-06-20T12:00:00Z"
-excerpt: "我第一次去日本以来已有半年，在这期间一直没有机会能够动笔写一写这段对我来说还算新奇的经历。今年五月我又去了一趟。在这以后我越发觉得应该把积攒出来的零碎感想串联起来。"
+excerpt: "难忘的体验"
 coverImage: "/assets/blog/2024-06-20-trip-to-japan-01/odaiba-rainbow-bridge-tokyo-tower.webp"
 ---
 
