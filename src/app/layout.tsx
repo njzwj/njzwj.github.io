@@ -47,7 +47,7 @@ export default function RootLayout(
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className={`${sans.variable} ${serif.variable} ${mono.variable} min-h-screen font-sans text-frontend bg-background`}>
+      <body className={`${sans.variable} ${serif.variable} ${mono.variable} min-h-screen font-sans text-frontend bg-background font-serif`}>
         <Providers>
           {children}
         </Providers>

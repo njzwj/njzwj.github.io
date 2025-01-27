@@ -112,7 +112,7 @@ const Header = (
           _.map(STATIC_NAV_ITEMS, (item: { title: string, href: string }) => (
             <NavbarMenuItem key={item.title} isActive={item.title===active}>
               <Link
-                className="w-full font-sans"
+                className="w-full"
                 color="foreground"
                 href={item.href}
                 size="lg"
