@@ -3,19 +3,22 @@
 }
 
 .markdown p,
-.markdown ul,
-.markdown ol,
 .markdown figure,
 .markdown blockquote {
   @apply my-6;
 }
 
+.markdown ul,
+.markdown ol {
+  @apply my-2;
+}
+
 .markdown ul {
-  @apply my-6 list-[circle] list-inside;
+  @apply list-[circle] list-inside pl-8;
 }
 
 .markdown ol {
-  @apply my-6 list-decimal list-inside;
+  @apply list-decimal list-inside pl-8;
 }
 
 .markdown h2 {
