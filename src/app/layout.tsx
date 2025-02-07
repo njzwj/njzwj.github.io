@@ -7,7 +7,7 @@ import Providers from "./providers";
 //   variable: "--font-noto-serif",
 // });
 const serif_sc = Noto_Serif_SC({
-  weight: ['200', '800'],
+  weight: ['200', '700'],
   style: ['normal', 'italic'],
   subsets: ["latin"],
   display: "swap",
