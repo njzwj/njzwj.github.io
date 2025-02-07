@@ -8,6 +8,7 @@ import Providers from "./providers";
 // });
 const serif_sc = Noto_Serif_SC({
   subsets: ["latin"],
+  display: "swap",
   variable: "--font-noto-serif-sc",
 });
 // const serif_tc = Noto_Serif_TC({variable: "--font-noto-serif-tc"});
