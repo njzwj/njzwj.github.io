@@ -6,7 +6,10 @@ import Providers from "./providers";
 //   display: "swap",
 //   variable: "--font-noto-serif",
 // });
-const serif_sc = Noto_Serif_SC({variable: "--font-noto-serif-sc"});
+const serif_sc = Noto_Serif_SC({
+  subsets: ["latin", "latin-ext"],
+  variable: "--font-noto-serif-sc",
+});
 // const serif_tc = Noto_Serif_TC({variable: "--font-noto-serif-tc"});
 // const serif_jp = Noto_Serif_JP({variable: "--font-noto-serif-jp"});
 // const sans = Noto_Sans({
