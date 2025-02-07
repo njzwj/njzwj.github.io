@@ -39,9 +39,9 @@ const config: Config = {
         md: "0 8px 30px rgba(0, 0, 0, 0.12)",
       },
       fontFamily: {
-        serif: ['var(--font-noto-serif-sc)'],
-        // sans: ['var(--font-noto-sans)'],
-        // mono: ['var(--font-noto-sans-mono)'],
+        serif: ['var(--font-noto-serif)'],
+        sans: ['var(--font-noto-sans)'],
+        mono: ['var(--font-noto-sans-mono)'],
       },
     },
   },

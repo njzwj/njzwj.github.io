@@ -1,29 +1,14 @@
 import "./globals.css";
-import { Noto_Sans, Noto_Serif, Noto_Serif_SC, Noto_Serif_TC, Noto_Serif_JP, Noto_Sans_Mono } from "next/font/google";
+import { Noto_Serif_SC } from "next/font/google";
 import Providers from "./providers";
 
-// const serif = Noto_Serif({
-//   display: "swap",
-//   variable: "--font-noto-serif",
-// });
-const serif_sc = Noto_Serif_SC({
+
+const serif = Noto_Serif_SC({
   weight: ['200', '700'],
   subsets: ["latin"],
   display: "swap",
-  variable: "--font-noto-serif-sc",
+  variable: "--font-noto-serif",
 });
-// const serif_tc = Noto_Serif_TC({variable: "--font-noto-serif-tc"});
-// const serif_jp = Noto_Serif_JP({variable: "--font-noto-serif-jp"});
-// const sans = Noto_Sans({
-//   subsets: ["latin", "latin-ext"],
-//   display: "swap",
-//   variable: "--font-noto-sans",
-// });
-// const mono = Noto_Sans_Mono({
-//   subsets: ["latin", "latin-ext"],
-//   display: "swap",
-//   variable: "--font-noto-sans-mono",
-// });
 
 export default function RootLayout(
   { children }: Readonly<{ children: React.ReactNode; }>
@@ -54,7 +39,7 @@ export default function RootLayout(
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
       </head>
-      <body className={`${serif_sc.className} min-h-screen text-frontend bg-background`}>
+      <body className={`${serif.className} min-h-screen text-frontend bg-background`}>
         <Providers>
           {children}
         </Providers>
