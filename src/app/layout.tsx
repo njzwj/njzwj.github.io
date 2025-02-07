@@ -3,7 +3,7 @@ import { Noto_Sans, Noto_Serif, Noto_Sans_Mono, Noto_Serif_SC } from "next/font/
 import Providers from "./providers";
 
 const serif = Noto_Serif_SC({
-  subsets: ["latin", "latin-ext", "simplified-han", "katakana", "hiragana", "emoji-symbols", "hangul", "greek"],
+  subsets: ["latin", "simplified-han", "katakana", "hiragana", "emoji-symbols", "hangul", "greek"],
   display: "swap",
   variable: "--font-noto-serif",
 });
