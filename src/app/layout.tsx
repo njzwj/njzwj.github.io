@@ -1,5 +1,5 @@
 import "./globals.css";
-import { Noto_Sans, Noto_Serif, Noto_Serif_SC, Noto_Serif_TC, Noto_Serif_JP Noto_Sans_Mono } from "next/font/google";
+import { Noto_Sans, Noto_Serif, Noto_Serif_SC, Noto_Serif_TC, Noto_Serif_JP, Noto_Sans_Mono } from "next/font/google";
 import Providers from "./providers";
 
 // const serif = Noto_Serif({
