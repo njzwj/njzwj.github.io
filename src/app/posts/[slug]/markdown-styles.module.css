@@ -1,7 +1,7 @@
 .markdown {
-  @apply leading-relaxed;
-  max-width: 800px;
-  margin: 0 auto;
+  @apply leading-loose;
+  @apply max-w-xl;
+  @apply mx-auto;
 }
 
 .markdown p,
