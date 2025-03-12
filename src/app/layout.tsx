@@ -35,6 +35,7 @@ export default function RootLayout(
           href="/favicon/favicon-16x16.png"
         />
         <link rel="icon" href="/favicon/favicon.ico" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" integrity="sha384-zh0CIslj+VczCZtlzBcjt5ppRcsAmDnRem7ESsYwWwg3m/OaJ2l4x7YBZl9Kxxib" crossOrigin="anonymous"></link>
         <meta name="msapplication-TileColor" content="#000000" />
         <meta name="theme-color" content="#000" />
         <link rel="alternate" type="application/rss+xml" href="/feed.xml" />
