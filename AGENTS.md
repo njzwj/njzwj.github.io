@@ -14,7 +14,7 @@ This blog uses Next.js 14, React, TypeScript, Tailwind CSS, and NextUI. It expor
 
 ## Build, Test, and Development Commands
 
-Use Node.js 20 to match CI and npm with the committed `package-lock.json`.
+Use Node.js 24 to match CI and npm with the committed `package-lock.json`.
 
 - `npm ci`: install the locked dependencies.
 - `npm run dev`: start local development at `http://localhost:3000`.

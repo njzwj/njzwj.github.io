@@ -132,7 +132,7 @@ on your published domain after deployment. No comments are posted by the setup.
 
 ## Preview and verify
 
-Use Node.js 20 and the committed npm lockfile.
+Use Node.js 24 and the committed npm lockfile.
 
 ```sh
 npm ci
