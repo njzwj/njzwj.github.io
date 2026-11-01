@@ -14,7 +14,7 @@ export function getPostSlugs() {
 export function getPostBySlug(slug: string, locale: Locale = "zh"): Post | undefined {
   const realSlug = slug.replace(/\.md$/, "");
   if (!getPostSlugs().includes(`${realSlug}.md`)) return undefined;
-  if (process.env.NODE_ENV !== "development" && realSlug.includes("_draft")) return undefined;
+  if (realSlug.includes("_draft")) return undefined;
   const fullPath = join(postsDirectory, `${realSlug}.md`);
   const fileContents = fs.readFileSync(fullPath, "utf8");
   const original = matter(fileContents);
@@ -41,8 +41,8 @@ export function getPostBySlug(slug: string, locale: Locale = "zh"): Post | undef
 
 export function getAllPosts(locale: Locale = "zh"): Post[] {
   const slugs = getPostSlugs();
-  const posts = slugs // if env is development, return all posts, otherwise filter out the one with "_draft" in the filename
-  .filter((slug) => process.env.NODE_ENV === "development" || !slug.includes("_draft"))
+  const posts = slugs
+  .filter((slug) => !slug.includes("_draft"))
   .map((slug) => getPostBySlug(slug, locale))
   .filter((post): post is Post => Boolean(post))
   // sort posts by date in descending order
