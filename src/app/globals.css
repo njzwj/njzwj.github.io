@@ -75,6 +75,7 @@ button { font: inherit; color: inherit; }
 .post-row h3 { font-weight: 400; font-size: 22px; line-height: 1.65; margin-top: 8px; }
 .post-excerpt { color: var(--muted); font-size: 14px; line-height: 1.9; margin-top: 6px; }
 .post-thumbnail img { width: 144px; height: 104px; object-fit: cover; filter: saturate(.85); }
+.post-thumbnail img[src$=".svg" i] { object-fit: contain; }
 .post-thumbnail:hover img { filter: none; }
 .site-footer { display: flex; justify-content: space-between; gap: 20px; padding-block: 26px 40px; margin-top: 78px; border-top: 1px solid var(--line); color: var(--muted); font-size: 12px; line-height: 1.8; }
 .site-footer span { margin-inline: 8px; }
