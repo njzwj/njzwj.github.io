@@ -16,7 +16,7 @@ export default function JournalPage({ locale = "zh", tag }: { locale?: Locale; t
         <p className="intro-subtitle" lang="en">{tag ? (locale === "en" ? "From the journal." : TAGS[tag].en) : locale === "en" ? "A record of things seen, places visited, and thoughts along the way." : "Notes, journeys & photographs."}</p>
       </section>
       <div className="archive-bar"><TagNav active={tag} locale={locale} /><span className="article-count" lang="en">{posts.length} entries</span></div>
-      {posts.length ? <PostList posts={posts} locale={locale} /> : <p className="empty-state">{locale === "en" ? "No entries yet." : "暂无文章。"}</p>}
+      {posts.length ? <PostList posts={posts.map(({ content, ...post }) => post)} locale={locale} /> : <p className="empty-state">{locale === "en" ? "No entries yet." : "暂无文章。"}</p>}
     </Body>
     <Footer />
   </>;

@@ -7,7 +7,7 @@ import { Header, Body, Footer } from "@/app/components";
 import ArticleContent from "@/app/components/article-content";
 import Comments from "@/app/components/comments";
 import { TAGS } from "@/lib/tags";
-import { formatDate } from "@/lib/date";
+import PostDate from "./post-date";
 import { localPath, type Locale } from "@/lib/locale";
 import markdownStyles from "@/app/posts/[slug]/markdown-styles.module.css";
 
@@ -24,7 +24,7 @@ export default async function Post({ params, locale = "zh" }: Params) {
         <header className="article-header">
           <Link className="back-link" href={localPath("/", locale)}>{locale === "en" ? "← All entries" : "← 全部文章 / All entries"}</Link>
           <div className="post-meta">
-            <time dateTime={post.date} lang="en">{formatDate(post.date)}</time>
+            <PostDate date={post.date} />
             <span aria-hidden="true">/</span>
             {post.tags.map((tag) => <Link key={tag} href={localPath("/tags/" + tag, locale)}>{TAGS[tag][locale]}</Link>)}
           </div>
