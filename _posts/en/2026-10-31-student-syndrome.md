@@ -1,6 +1,7 @@
 ---
 title: "Student syndrome: The literate illiterate"
 excerpt: "We are used to finding satisfaction in explanations, but less familiar with learning through action."
+coverAlt: "A split illustration: an open book on a warm background on the left, and sky, mountains, grass, rocks, and trees on a pale blue background on the right."
 lang: en
 ---
 

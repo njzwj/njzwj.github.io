@@ -2,6 +2,7 @@
 title: "Looking Back at AI: Past Experience and Present Reflections"
 date: "2026-11-01T00:00:00+08:00"
 excerpt: "AI may soon no longer need to act according to human needs."
+coverAlt: "A human head in profile, with gears and code symbols filling the brain area."
 lang: en
 ---
 

@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" fill="none">
+  <title>The page and the world</title>
+  <desc>An open book on a warm background faces a landscape of sky, mountains, grass, rocks, and trees on a cool background.</desc>
+  <rect width="1200" height="600" fill="#F3F0E9" />
+  <rect x="600" width="600" height="600" fill="#E2ECEB" />
+
+  <g stroke-linecap="round" stroke-linejoin="round">
+    <path d="M300 240 C254 215 204 212 152 223 V377 C204 366 254 369 300 394 C346 369 396 366 448 377 V223 C396 212 346 215 300 240Z" fill="#FCFAF4" stroke="#393D38" stroke-width="4" />
+    <path d="M300 240 V394" stroke="#393D38" stroke-width="4" />
+    <path d="M184 260 C211 258 239 262 267 273 M184 296 C211 294 239 298 267 309 M184 332 C211 330 239 334 267 345 M333 273 C361 262 389 258 416 260 M333 309 C361 298 389 294 416 296 M333 345 C354 337 375 332 393 332" stroke="#A2A295" stroke-width="3" />
+    <path d="M386 218 V262 L397 253 L408 260 V216" fill="#BD6544" />
+  </g>
+
+  <circle cx="1060" cy="142" r="25" fill="#C58B63" />
+  <path d="M682 155 H736 M723 139 H771" stroke="#F7FAF6" stroke-width="5" stroke-linecap="round" />
+  <path d="M600 352 L742 214 L844 315 L966 190 L1124 348 L1200 274 V473 H600Z" fill="#B5C9C7" />
+  <path d="M716 239 L742 214 L779 251 L748 238 L735 245Z M935 221 L966 190 L1009 233 L975 219 L961 226 L950 216Z" fill="#F1F4ED" />
+  <path d="M600 391 L685 320 L797 397 L910 287 L1055 414 L1142 339 L1200 371 V495 H600Z" fill="#8DA99D" />
+  <path d="M600 425 C719 396 785 438 881 423 C996 405 1100 431 1200 409 V600 H600Z" fill="#D2DDC4" />
+
+  <g stroke="#496653" stroke-width="4" stroke-linecap="round">
+    <path d="M957 388 V449 M1006 344 V451 M1063 364 V460 M1117 321 V446 M1170 369 V454" />
+  </g>
+  <g fill="#64846D">
+    <path d="M957 326 L931 368 H942 L924 400 H990 L972 368 H983Z" />
+    <path d="M1063 292 L1033 343 H1045 L1026 380 H1100 L1081 343 H1093Z" />
+    <path d="M1170 303 L1142 350 H1153 L1134 389 H1200 L1188 350 H1198Z" />
+  </g>
+  <g fill="#466953">
+    <path d="M1006 272 L977 321 H989 L968 362 H981 L958 408 H1054 L1031 362 H1044 L1023 321 H1035Z" />
+    <path d="M1117 247 L1087 299 H1099 L1077 342 H1091 L1065 393 H1169 L1143 342 H1157 L1135 299 H1147Z" />
+  </g>
+
+  <path d="M695 472 L710 443 L744 437 L769 456 L776 478 L732 487Z" fill="#969D8F" />
+  <path d="M710 443 L744 437 L732 464 L695 472Z" fill="#B5BAA8" />
+  <path d="M806 514 L819 494 L841 489 L859 507 L854 522 H819Z" fill="#A5AB99" />
+  <g stroke="#79916B" stroke-width="3" stroke-linecap="round">
+    <path d="M655 457 L650 446 M655 457 L660 440 M785 470 L780 458 M785 470 L792 454 M905 511 L899 497 M905 511 V490 M905 511 L913 499 M1097 505 L1091 491 M1097 505 L1104 487 M1160 548 L1155 537 M1160 548 L1166 532" />
+  </g>
+</svg>

@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" fill="none">
+  <title>Try, adjust, continue</title>
+  <desc>A single line makes three loops as it moves upward and forward toward a warm orange dot.</desc>
+  <rect width="1200" height="600" fill="#F3F0E9" />
+  <path d="M174 398 H300 C351 398 390 369 390 325 C390 275 324 271 324 322 C324 372 395 374 444 350 L516 316 C558 296 583 268 580 236 C576 196 524 198 524 238 C524 278 580 282 625 265 L694 239 C728 226 748 208 747 184 C746 156 709 156 709 185 C709 216 751 223 793 215 L905 193 C934 187 955 186 986 186" stroke="#393D38" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+  <circle cx="174" cy="398" r="6" fill="#F3F0E9" stroke="#393D38" stroke-width="3" />
+  <circle cx="986" cy="186" r="12" fill="#BD6544" />
+</svg>

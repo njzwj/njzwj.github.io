@@ -1,7 +1,9 @@
 ---
-title: "学生病——会读书认字的文盲"
+title: "“学生”病——会读书认字的文盲"
 date: "2026-10-31T00:00:00+08:00"
 excerpt: "我们习惯了从解释中获得满足，却不熟悉怎样从行动中学习。"
+coverImage: "/assets/blog/2026-10-31-student-syndrome/hero.svg"
+coverAlt: "左右分区的插图：暖色背景上是打开的书本，浅蓝背景上是天空、群山、草地、石头和树林。"
 tags: [杂文]
 lang: zh-CN
 ---

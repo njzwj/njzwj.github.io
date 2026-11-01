@@ -2,6 +2,8 @@
 title: "回看 AI：过去的经验与今天的思考"
 date: "2026-11-01T00:00:00+08:00"
 excerpt: "AI或许很快不再需要根据人类需求来行动"
+coverImage: "/assets/blog/2026-11-01-ai-experience-and-reflections/hero.svg"
+coverAlt: "人物侧脸剪影，大脑区域由齿轮和代码符号组成。"
 tags: [杂文]
 lang: zh-CN
 ---
