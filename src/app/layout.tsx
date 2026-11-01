@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Noto_Serif_SC, Noto_Serif_JP } from "next/font/google";
 import Providers from "./providers";
+import GoogleAnalytics from "./components/google-analytics";
 
 const serif = Noto_Serif_SC({
   weight: ["400", "600"], subsets: ["latin"], display: "swap", preload: false,
@@ -22,6 +23,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="zh-CN" suppressHydrationWarning>
       <body className={serif.variable + " " + japanese.variable}>
         <Providers>{children}</Providers>
+        <GoogleAnalytics />
       </body>
     </html>
   );

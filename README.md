@@ -7,6 +7,8 @@ Markdown editions, and Disqus comments.
 See [Writing and setup](docs/writing.md) for Markdown fields, diagrams,
 translations, and comment configuration.
 
+See [Google Analytics setup](docs/analytics.md) to enable visitor statistics.
+
 ## Support of draft
 
 Name posts with suffix `_draft` to make it a draft post. This post will not be shown in the production build.
