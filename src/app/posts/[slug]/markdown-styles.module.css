@@ -35,6 +35,11 @@
 .markdown :global(.footnotes) { font-size: 14px; border-top: 1px solid var(--line); padding-top: 20px; margin-top: 50px; }
 .photo > figure { max-width: 960px; margin-block: 3em; }
 .photo > figure img { max-height: none; }
+@media (min-width: 701px) {
+  .markdown { font-size: 19px; line-height: 1.9; }
+  .markdown img, .photo > figure img { max-height: min(60vh, 560px); }
+  .photo > figure { max-width: 800px; margin-block: 2em; }
+}
 @media (max-width: 700px) {
   .markdown { font-size: 17px; line-height: 1.95; }
   .photo > figure { margin-inline: -12px; max-width: calc(100% + 24px); }

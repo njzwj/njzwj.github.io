@@ -22,7 +22,9 @@ coverAlt: "Reeds beside the river in afternoon light"
   English display labels are Essays, Travel, and Photography. Multiple tags are
   allowed. Missing tags default to Essays. Other tags cause a build error.
 - `layout: article` is the default. It uses a narrow reading column.
-  `layout: photo` gives Markdown figures the full page width. Text stays narrow.
+  `layout: photo` gives Markdown figures a wider column, up to 800px on desktop.
+  Text stays narrow. Desktop images, including covers, keep their aspect ratio
+  and fit within 60% of the viewport height, up to 560px.
 - `lang`: `zh-CN` (default), `en`, or `ja`. Japanese articles use Japanese serif
   glyphs. English and Chinese text use Georgia and Noto Serif SC, with system
   serif fallbacks. Fonts are self-hosted by the Next.js build.
