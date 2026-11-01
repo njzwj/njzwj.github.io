@@ -1,15 +1,15 @@
-import { type Author } from "./author";
+export type Tag = "essays" | "travel" | "photography";
 
 export type Post = {
   slug: string;
   title: string;
   date: string;
-  coverImage: string;
-  author: Author;
   excerpt: string;
-  ogImage: {
-    url: string;
-  };
   content: string;
-  preview?: boolean;
+  coverImage?: string;
+  coverAlt?: string;
+  tags: Tag[];
+  layout: "article" | "photo";
+  lang: "zh-CN" | "en" | "ja";
+  hasEnglish: boolean;
 };

@@ -1,9 +1,5 @@
-export default function Body(
-  { children }: Readonly<{ children: React.ReactNode; }>
-) {
-  return (
-    <div className="container max-w-screen-lg px-6 mx-auto">
-      {children}
-    </div>
-  );
+import type { Locale } from "@/lib/locale";
+
+export default function Body({ children, locale = "zh" }: { children: React.ReactNode; locale?: Locale }) {
+  return <main id="main" className="shell main-content" lang={locale === "en" ? "en" : "zh-CN"}>{children}</main>;
 }

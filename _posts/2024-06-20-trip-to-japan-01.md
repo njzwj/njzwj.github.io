@@ -3,6 +3,9 @@ title: "日本旅行（一） 池袋，歌舞伎町和台场冬季烟花"
 date: "2024-06-20T12:00:00Z"
 excerpt: "难忘的体验"
 coverImage: "/assets/blog/2024-06-20-trip-to-japan-01/odaiba-rainbow-bridge-tokyo-tower.webp"
+tags: [游记, 摄影]
+layout: photo
+lang: zh-CN
 ---
 
 自从我第一次去日本以来，已经有半年了。在这期间，我一直没有机会动笔写下这段对我来说新奇的经历。今年五月，我又去了一趟日本。之后，我越发觉得应该把积攒的零碎感想串联起来。这不仅是为了记录，也是为了分享我的想法。

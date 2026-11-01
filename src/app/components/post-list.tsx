@@ -1,73 +1,30 @@
-"use client";
+import Link from "next/link";
+import type { Post } from "@/interfaces/post";
+import { TAGS } from "@/lib/tags";
+import { formatDate } from "@/lib/date";
+import { localPath, type Locale } from "@/lib/locale";
 
-import _ from "underscore";
-import { Post } from "@/interfaces/post";
-import {
-  Card, CardHeader, CardBody, CardFooter,
-  Divider, Link, Image
-} from "@nextui-org/react";
-import { useEffect, useState } from "react";
-
-type Props = {
-  posts: Post[];
-};
-
-function PostCard (
-  { title, date, excerpt, slug, coverImage }:
-  { title: string, date: string, excerpt: string, slug: string, coverImage: string }
-) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => setMounted(true), []);
-  if (!mounted) return null;
-
-  const coverImagePath = coverImage || "/assets/hero/wooden-bench.webp";
-
+export default function PostList({ posts, locale = "zh" }: { posts: Post[]; locale?: Locale }) {
+  const years = Array.from(new Set(posts.map((post) => post.date.slice(0, 4))));
   return (
-    <Card
-      isFooterBlurred
-      isPressable
-      onClick={() => window.location.href = `/posts/${slug}`}
-    >
-      {/* <CardFooter className="absolute z-10 bottom-0 flex-col !items-start border-t-1 bg-white/60 border-zinc-100/50 dark:bg-black/40 dark:border-default-300">
-        <h4 className="text-md font-bold text-left">{title}</h4>
-        <p className="text-sm text-default-500">
-          {excerpt}
-        </p>
-        <p className="text-small text-default-500">
-          {new Date(date).toLocaleDateString("en-US")}
-        </p>
-      </CardFooter> */}
-
-      <CardBody className="overflow-visible p-2">
-        <Image
-          alt={title}
-          removeWrapper
-          className="object-cover rounded-xl mb-4"
-          src={coverImagePath}
-        />
-        <small className="text-sm text-default-500">{new Date(date).toLocaleDateString("en-US")}</small>
-        <h4 className="font-bold text-lg text-left">{title}</h4>
-        <small className="text-sm text-default-500">{excerpt}</small>
-      </CardBody>
-    </Card>
-  );
-}
-
-const PostList = ({ posts }: Props) => {
-  return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 sm:grid-cols-2 gap-6">
-      {posts.map((post) => (
-        <PostCard
-          key={post.slug}
-          title={post.title}
-          date={post.date}
-          excerpt={post.excerpt}
-          slug={post.slug}
-          coverImage={post.coverImage}
-        />
+    <div className="timeline">
+      {years.map((year) => (
+        <section key={year} className="timeline-year" aria-labelledby={"year-" + year}>
+          <h2 id={"year-" + year} className="year-label">{year}<span aria-hidden="true">—</span></h2>
+          <ol className="post-list">
+            {posts.filter((post) => post.date.startsWith(year)).map((post) => (
+              <li key={post.slug} className={"post-row " + (post.coverImage ? "has-cover" : "")}>
+                <div>
+                  <div className="post-meta"><time dateTime={post.date} lang="en">{formatDate(post.date, true)}</time><span aria-hidden="true">/</span>{post.tags.map((tag) => <Link key={tag} href={localPath("/tags/" + tag, locale)} title={TAGS[tag].en}>{TAGS[tag][locale]}</Link>)}</div>
+                  <h3 lang={post.lang}><Link href={localPath("/posts/" + post.slug, locale)}>{post.title}</Link></h3>
+                  {post.excerpt && <p className="post-excerpt" lang={post.lang}>{post.excerpt}</p>}
+                </div>
+                {post.coverImage && <Link href={localPath("/posts/" + post.slug, locale)} className="post-thumbnail" tabIndex={-1} aria-hidden="true"><img src={post.coverImage} alt="" loading="lazy" decoding="async" width="144" height="104" /></Link>}
+              </li>
+            ))}
+          </ol>
+        </section>
       ))}
     </div>
   );
-};
-
-export default PostList;
+}

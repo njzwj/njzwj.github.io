@@ -1,7 +1,6 @@
 import { unified } from 'unified';
 import remarkParse from 'remark-parse';
 import remarkMath from 'remark-math';
-import rehypeMathjax from 'rehype-mathjax';
 import rehypeKatex from 'rehype-katex';
 import remarkGfm from 'remark-gfm';
 import remarkRehype from 'remark-rehype';
@@ -10,7 +9,7 @@ import rehypeStringify from 'rehype-stringify';
 
 export default async function markdownToHtml(markdown: string) {
   const result = await unified()
-    .use(remarkParse, {fragment: true})
+    .use(remarkParse)
     .use(remarkMath)
     .use(remarkGfm)
     .use(remarkRehype)
@@ -20,5 +19,5 @@ export default async function markdownToHtml(markdown: string) {
     .use(rehypeFigure)
     .use(rehypeStringify)
     .process(markdown);
-  return result.toString();
+  return result.toString().replaceAll('<img ', '<img loading="lazy" decoding="async" ');
 }
